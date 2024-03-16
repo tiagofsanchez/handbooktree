@@ -1,5 +1,7 @@
 import Nav from "./Nav";
-
+// TO DO
+// get the profile of the user
+// get the sign out button with the redirect to the login page
 const Layout = ({ children }) => {
   return (
     <div>
