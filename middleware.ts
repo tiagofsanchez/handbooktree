@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-// import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 
 // TODOS
 // 1. check the url for everything
@@ -17,13 +17,11 @@ export default async function middleware(req: NextRequest) {
 
   //this is checking if the user is there and I will need to add that once I connected supabase here
 
-  //   const supabase = createMiddlewareClient({ req, res });
+    const supabase = createMiddlewareClient({ req, res });
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-  //   const {
-  //     data: { user },
-  //   } = await supabase.auth.getUser();
-
-  const user = true;
 
   const url = req.nextUrl;
   const hostname = req.headers.get("host");

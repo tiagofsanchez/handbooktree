@@ -1,5 +1,11 @@
+import AuthForm from '@/components/app/AuthForm';
+
 const LoginPage = () => {
-  return <h1>Login Page</h1>;
+  return (
+    <div className="min-h-screen flex flex-col justify-center py-12 px-6 lg:px-56 ">
+      <AuthForm />
+    </div>
+  );
 };
 
 export default LoginPage;
