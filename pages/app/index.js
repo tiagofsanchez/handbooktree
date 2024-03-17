@@ -1,8 +1,9 @@
 import Layout from "@/components/app/Layout";
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
-const myApp = () => {
+const App = ({ userData }) => {
   return (
-    <Layout>
+    <Layout >
       <div className="p-5">
         <h1>Something</h1>
       </div>
@@ -10,4 +11,20 @@ const myApp = () => {
   );
 };
 
-export default myApp;
+export const getServerSideProps = async (ctx) => {
+  const supabase = createPagesServerClient(ctx);
+  const { data: user } = await supabase.auth.getUser();
+
+  const { data } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("id", user.user.id);
+
+  return {
+    props: {
+      userData: data[0] || "",
+    },
+  };
+};
+
+export default App;
