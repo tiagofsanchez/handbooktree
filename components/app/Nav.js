@@ -7,6 +7,7 @@ import { useState } from "react";
 // DONE: menu button on and off
 // DONE: all the tabs that should be there
 // any other links that you might need
+// Link to the landing page of the app (at the moment it opens a new app)
 
 const tabs = [
   {
@@ -38,7 +39,7 @@ const Nav = ({ children }) => {
         className="fixed top-4 right-4 z-20 bg-stone-200/30 rounded-md p-2 sm:hidden"
         onClick={() => setShowSidebar(!showSidebar)}
       >
-        <Menu className="" />
+        <Menu />
       </button>
       <div
         className={`transform ${
@@ -54,16 +55,72 @@ const Nav = ({ children }) => {
               className="rounded-lg p-1.5 hover:bg-stone-200 dark:hover:bg-stone-700"
             >
               <svg
-                width="26"
-                viewBox="0 0 76 65"
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="text-black dark:text-white"
               >
-                <path
-                  d="M37.5274 0L75.0548 65H0L37.5274 0Z"
-                  fill="currentColor"
+                <rect
+                  x="4.5"
+                  y="3.75"
+                  width="6"
+                  height="22.5"
+                  rx="0.75"
+                  fill="url(#paint0_linear_43_32)"
                 />
+                <rect
+                  x="11.25"
+                  y="3.75"
+                  width="6"
+                  height="22.5"
+                  rx="0.75"
+                  fill="url(#paint1_linear_43_32)"
+                />
+                <rect
+                  x="17.25"
+                  y="3.77405"
+                  width="6"
+                  height="22.5"
+                  rx="0.75"
+                  transform="rotate(-7.41161 17.25 3.77405)"
+                  fill="url(#paint2_linear_43_32)"
+                />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_43_32"
+                    x1="7.5"
+                    y1="3.75"
+                    x2="7.5"
+                    y2="26.25"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#FF23B4" stopOpacity="0.89" />
+                    <stop offset="1" stopColor="#FFADE3" stopOpacity="0.63" />
+                  </linearGradient>
+                  <linearGradient
+                    id="paint1_linear_43_32"
+                    x1="14.25"
+                    y1="3.75"
+                    x2="14.25"
+                    y2="26.25"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#FF23B4" stopOpacity="0.89" />
+                    <stop offset="1" stopColor="#FFADE3" stopOpacity="0.63" />
+                  </linearGradient>
+                  <linearGradient
+                    id="paint2_linear_43_32"
+                    x1="20.25"
+                    y1="3.77405"
+                    x2="20.25"
+                    y2="26.2741"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#FF23B4" stopOpacity="0.89" />
+                    <stop offset="1" stopColor="#FFADE3" stopOpacity="0.63" />
+                  </linearGradient>
+                </defs>
               </svg>
             </Link>
           </div>

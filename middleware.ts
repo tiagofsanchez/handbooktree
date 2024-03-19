@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-// import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 
 // TODOS
 // 1. check the url for everything
 // connect to supabase
-
-
 
 export const config = {
   matcher: ["/((?!api/|_next/|_static/|examples/|[\\w-]+\\.\\w+).*)"],
@@ -17,13 +15,10 @@ export default async function middleware(req: NextRequest) {
 
   //this is checking if the user is there and I will need to add that once I connected supabase here
 
-  //   const supabase = createMiddlewareClient({ req, res });
-
-  //   const {
-  //     data: { user },
-  //   } = await supabase.auth.getUser();
-
-  const user = true;
+  const supabase = createMiddlewareClient({ req, res });
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   const url = req.nextUrl;
   const hostname = req.headers.get("host");
@@ -39,12 +34,11 @@ export default async function middleware(req: NextRequest) {
       ? hostname.replace(`.brokertree.co`, "")
       : hostname.replace(`.localhost:3000`, "");
 
-  
   //rewrites for app pages
   // like that I do have a clear separation on my app and this is the app while home
   // and the other pages are just content driven pages and do not have interaction with use
   if (currentHost == "app") {
-    if (path==='/' && !user) {
+    if (path === "/" && !user) {
       url.pathname = "/login";
       return NextResponse.redirect(url);
     }
