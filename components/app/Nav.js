@@ -95,8 +95,8 @@ const Nav = ({ children }) => {
                     y2="26.25"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#FF23B4" stop-opacity="0.89" />
-                    <stop offset="1" stop-color="#FFADE3" stop-opacity="0.63" />
+                    <stop stopColor="#FF23B4" stopOpacity="0.89" />
+                    <stop offset="1" stopColor="#FFADE3" stopOpacity="0.63" />
                   </linearGradient>
                   <linearGradient
                     id="paint1_linear_43_32"
@@ -106,8 +106,8 @@ const Nav = ({ children }) => {
                     y2="26.25"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#FF23B4" stop-opacity="0.89" />
-                    <stop offset="1" stop-color="#FFADE3" stop-opacity="0.63" />
+                    <stop stopColor="#FF23B4" stopOpacity="0.89" />
+                    <stop offset="1" stopColor="#FFADE3" stopOpacity="0.63" />
                   </linearGradient>
                   <linearGradient
                     id="paint2_linear_43_32"
@@ -117,8 +117,8 @@ const Nav = ({ children }) => {
                     y2="26.2741"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#FF23B4" stop-opacity="0.89" />
-                    <stop offset="1" stop-color="#FFADE3" stop-opacity="0.63" />
+                    <stop stopColor="#FF23B4" stopOpacity="0.89" />
+                    <stop offset="1" stopColor="#FFADE3" stopOpacity="0.63" />
                   </linearGradient>
                 </defs>
               </svg>
