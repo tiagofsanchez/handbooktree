@@ -39,7 +39,7 @@ const Nav = ({ children }) => {
         className="fixed top-4 right-4 z-20 bg-stone-200/30 rounded-md p-2 sm:hidden"
         onClick={() => setShowSidebar(!showSidebar)}
       >
-        <Menu className="" />
+        <Menu />
       </button>
       <div
         className={`transform ${
