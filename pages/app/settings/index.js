@@ -4,21 +4,40 @@ import { Field, Form, Formik } from "formik";
 import ErrorMessage from "@/components/form/ErrorMessage";
 import LoadingDots from "@/components/icons/loading-dots";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { Toaster, toast } from "sonner";
 
 // done: button styling
 // done: loading
 // done: error message on the form
-// and toast for when you receive the insert the information in supabase
+// done: and toast for when you receive the insert the information in supabase
 // abstract this away from the page into a reusable form component
-// connect to full_name on supabase
+// done: connect to full_name on supabase
 // connect to email on supabase
 
 const fullNameSchema = Yup.object().shape({
   full_name: Yup.string().required("Required"),
 });
 
-const settingsPage = ({ userData }) => {
-  console.log(userData)
+const SettingsPage = ({ userData }) => {
+  const supabase = useSupabaseClient();
+
+  async function updateProfileName({ full_name }) {
+    try {
+      const updates = {
+        id: userData.id,
+        full_name,
+        updated_at: new Date().toISOString(),
+      };
+      let { error } = await supabase?.from("profiles")?.upsert(updates);
+      if (error) throw error;
+    } catch (error) {
+      alert(JSON.stringify(error, null, 2));
+      console.log(error);
+    }
+    toast.success("You have update your profile");
+  }
+
   return (
     <Layout>
       <div className="p-5 space-y-8">
@@ -26,13 +45,13 @@ const settingsPage = ({ userData }) => {
         <div>
           <Formik
             initialValues={{
-              full_name: "",
+              full_name: userData?.full_name || "",
             }}
             validationSchema={fullNameSchema}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                //   updateFunction({ ...values });
+                // alert(JSON.stringify(values, null, 2));
+                updateProfileName({ ...values });
                 setSubmitting(false);
               }, 800);
             }}
@@ -103,27 +122,22 @@ const settingsPage = ({ userData }) => {
             )}
           </Formik>
         </div>
+        <Toaster />
       </div>
     </Layout>
   );
 };
 
-
 export const getServerSideProps = async (ctx) => {
   const supabase = createPagesServerClient(ctx);
-  // const { data: user } = await supabase.auth.getUser();
 
-  const { data } = await supabase
-    .from("profiles")
-    .select("*")
-    // .eq("id", user.user.id);
+  const { data } = await supabase.from("profiles").select("*");
 
   return {
     props: {
-      userData: data || "",
+      userData: data[0] || "",
     },
   };
 };
 
-
-export default settingsPage;
+export default SettingsPage;
