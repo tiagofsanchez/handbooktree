@@ -1,4 +1,4 @@
-import Nav from "./Nav";
+import Nav from "./nav";
 import { LogOut } from "lucide-react";
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";

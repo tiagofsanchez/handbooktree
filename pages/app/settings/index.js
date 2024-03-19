@@ -6,8 +6,7 @@ import LoadingDots from "@/components/icons/loading-dots";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Toaster, toast } from "sonner";
-import { Button } from "@/components/ui/button"
-
+import { Button } from "@/components/ui/button";
 
 // done: button styling
 // done: loading
@@ -104,8 +103,7 @@ const SettingsPage = ({ userData }) => {
                       onSubmit={handleSubmit}
                       disabled={isSubmitting && !(dirty && isValid)}
                       className="w-32"
-                      variant=""
-
+                      variant="outline"
                     >
                       {isSubmitting ? (
                         <LoadingDots color="#FF6A95" />
