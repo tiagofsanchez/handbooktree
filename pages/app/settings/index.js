@@ -6,6 +6,8 @@ import LoadingDots from "@/components/icons/loading-dots";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Toaster, toast } from "sonner";
+import { Button } from "@/components/ui/button"
+
 
 // done: button styling
 // done: loading
@@ -97,18 +99,20 @@ const SettingsPage = ({ userData }) => {
                     <p className="text-sm text-stone-500 dark:text-stone-400">
                       Please use 32 characters maximum.
                     </p>
-                    <button
+                    <Button
                       type="submit"
                       onSubmit={handleSubmit}
                       disabled={isSubmitting && !(dirty && isValid)}
-                      className=" px-2 py-2 w-32 text-white  rounded justify-self-end hover:bg-stone-600 border border-stone-200 bg-white dark:border-stone-700 dark:bg-black"
+                      className="w-32"
+                      variant=""
+
                     >
                       {isSubmitting ? (
                         <LoadingDots color="#FF6A95" />
                       ) : (
                         <p>Save changes</p>
                       )}
-                    </button>
+                    </Button>
                   </div>
                 </Form>
                 {/* <pre className="mt-10 mb-40 bg-slate-200/20 p-5">
