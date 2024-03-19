@@ -2,10 +2,13 @@ import Layout from "@/components/app/Layout";
 import * as Yup from "yup";
 import { Field, Form, Formik } from "formik";
 import ErrorMessage from "@/components/form/ErrorMessage";
+import LoadingDots from "@/components/icons/loading-dots";
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
-// button styling
-// loading
-// and toast for when the
+// done: button styling
+// done: loading
+// done: error message on the form
+// and toast for when you receive the insert the information in supabase
 // abstract this away from the page into a reusable form component
 // connect to full_name on supabase
 // connect to email on supabase
@@ -15,6 +18,7 @@ const fullNameSchema = Yup.object().shape({
 });
 
 const settingsPage = ({ userData }) => {
+  console.log(userData)
   return (
     <Layout>
       <div className="p-5 space-y-8">
@@ -22,7 +26,7 @@ const settingsPage = ({ userData }) => {
         <div>
           <Formik
             initialValues={{
-              full_name: userData?.name || "",
+              full_name: "",
             }}
             validationSchema={fullNameSchema}
             onSubmit={(values, { setSubmitting }) => {
@@ -49,11 +53,13 @@ const settingsPage = ({ userData }) => {
                   onSubmit={handleSubmit}
                   className=" rounded border border-stone-200 bg-white dark:border-stone-700 dark:bg-black"
                 >
-                  <div className="grid p-6 gap-4 sm:w-2/3">
+                  <div className="grid p-8 gap-4 sm:w-2/3">
                     <h2 htmlFor="" className="text-xl font-bold">
                       Name
                     </h2>
-                    <label>Your name for this application</label>
+                    <label className="text-sm text-stone-500 dark:text-stone-400">
+                      Your name for this application
+                    </label>
                     <Field
                       type="text"
                       name="full_name"
@@ -67,25 +73,32 @@ const settingsPage = ({ userData }) => {
                       <ErrorMessage errorMessage={errors.full_name} />
                     ) : null}
                   </div>
-                  <div className="flex flex-col items-center justify-center space-y-2 rounded-b border-t border-stone-200 bg-stone-100 p-3 dark:border-stone-700 dark:bg-stone-800 sm:flex-row sm:justify-between sm:space-y-0 sm:px-10">
-                    <p>something</p>
+
+                  <div className="flex flex-col items-center justify-center space-y-2 rounded-b border-t border-stone-200 bg-stone-100 p-2 dark:border-stone-700 dark:bg-stone-800 sm:flex-row sm:justify-between sm:space-y-0 sm:px-8">
+                    <p className="text-sm text-stone-500 dark:text-stone-400">
+                      Please use 32 characters maximum.
+                    </p>
                     <button
                       type="submit"
                       onSubmit={handleSubmit}
                       disabled={isSubmitting && !(dirty && isValid)}
-                      className=" px-2 py-1 text-white  rounded justify-self-end hover:bg-stone-600 border border-stone-200 bg-white dark:border-stone-700 dark:bg-black"
+                      className=" px-2 py-2 w-32 text-white  rounded justify-self-end hover:bg-stone-600 border border-stone-200 bg-white dark:border-stone-700 dark:bg-black"
                     >
-                      Save
+                      {isSubmitting ? (
+                        <LoadingDots color="#FF6A95" />
+                      ) : (
+                        <p>Save changes</p>
+                      )}
                     </button>
                   </div>
                 </Form>
-                <pre className="mt-10 mb-40 bg-slate-200/20 p-5">
+                {/* <pre className="mt-10 mb-40 bg-slate-200/20 p-5">
                   {JSON.stringify(
                     { values, errors, touched, isSubmitting, dirty, isValid },
                     null,
                     4
                   )}
-                </pre>
+                </pre> */}
               </>
             )}
           </Formik>
@@ -94,5 +107,23 @@ const settingsPage = ({ userData }) => {
     </Layout>
   );
 };
+
+
+export const getServerSideProps = async (ctx) => {
+  const supabase = createPagesServerClient(ctx);
+  // const { data: user } = await supabase.auth.getUser();
+
+  const { data } = await supabase
+    .from("profiles")
+    .select("*")
+    // .eq("id", user.user.id);
+
+  return {
+    props: {
+      userData: data || "",
+    },
+  };
+};
+
 
 export default settingsPage;

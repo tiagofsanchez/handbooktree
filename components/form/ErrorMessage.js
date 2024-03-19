@@ -1,7 +1,9 @@
 const ErrorMessage = ({ errorMessage }) => {
-    return (
-      <div className="mt-2 text-red-600 font-bold text-sm">{errorMessage}</div>
-    );
-  };
-  
-  export default ErrorMessage;
+  return (
+    <span className=" inline-block  -mt-2  text-red-600 text-sm">
+      {errorMessage}
+    </span>
+  );
+};
+
+export default ErrorMessage;
