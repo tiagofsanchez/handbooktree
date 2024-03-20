@@ -1,6 +1,5 @@
-import { DialogListing } from "@/components/app/DioalogListing";
+import { CreateListingDialog } from "@/components/app/create-listing-dialog";
 import Layout from "@/components/app/Layout";
-import { CirclePlus } from "lucide-react";
 
 // TODO:
 // button to add more listings
@@ -9,12 +8,10 @@ import { CirclePlus } from "lucide-react";
 const listingsPage = () => {
   return (
     <Layout>
-      <DialogListing/>
+      <CreateListingDialog />
       <div className="p-5 space-y-8">
         <h1 className="text-3xl">user listings page</h1>
-        
       </div>
-      
     </Layout>
   );
 };

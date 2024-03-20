@@ -1,7 +1,7 @@
 import Layout from "@/components/app/Layout";
 import * as Yup from "yup";
 import { Field, Form, Formik } from "formik";
-import ErrorMessage from "@/components/form/ErrorMessage";
+import ErrorMessage from "@/components/form/errorMessage";
 import LoadingDots from "@/components/icons/loading-dots";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
