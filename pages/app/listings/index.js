@@ -18,6 +18,7 @@ const listingsPage = ({ userListings }) => {
           {userListings &&
             userListings.map((listing) => (
               <CardListing
+              id={listing.id}
                 key={listing.id}
                 name={listing.name}
                 subdomain={listing.subdomain}

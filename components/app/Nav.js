@@ -1,38 +1,70 @@
-import { Globe, LayoutDashboard, Menu, Settings } from "lucide-react";
+import {
+  ChevronLeft,
+  LayoutDashboard,
+  Menu,
+  Notebook,
+  Home,
+  Settings,
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 // TO DOS IN THIS NAV
 // DONE: menu button on and off
 // DONE: all the tabs that should be there
 // any other links that you might need
-// Link to the landing page of the app (at the moment it opens a new app)
-
-const tabs = [
-  {
-    name: "Dashboard",
-    href: "/",
-    tab: "/app",
-    icon: <LayoutDashboard width={18} />,
-  },
-  {
-    name: "Listings",
-    href: "/listings",
-    tab: "/app/listings",
-    icon: <Globe width={18} />,
-  },
-  {
-    name: "Settings",
-    href: "/settings",
-    tab: "/app/settings",
-    icon: <Settings width={18} />,
-  },
-];
 
 const Nav = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const router = useRouter();
+
+  const tabsToRender = useMemo(() => {
+    if (router.pathname === "/app/[id]") {
+      return [
+        {
+          name: "back to listings",
+          href: "/listings",
+          tab: "/app/listings",
+          icon: <ChevronLeft width={18} />,
+        },
+        {
+          name: "Guides",
+          href: `${router.asPath}/guides`,
+          tab: `/app${router.asPath}/guides`,
+          icon: <Notebook width={18} />,
+        },
+        {
+          name: "Settings",
+          href: `${router.asPath}/settings`,
+          tab: `/app${router.asPath}/settings`,
+          icon: <Settings width={18} />,
+        },
+      ];
+    } else {
+      return [
+        {
+          name: "Dashboard",
+          href: "/",
+          tab: "/app",
+          icon: <LayoutDashboard width={18} />,
+        },
+        {
+          name: "Listings",
+          href: "/listings",
+          tab: "/app/listings",
+          icon: <Home width={18} />,
+        },
+        {
+          name: "Settings",
+          href: "/settings",
+          tab: "/app/settings",
+          icon: <Settings width={18} />,
+        },
+      ];
+    }
+  }, [router]);
+
   return (
     <>
       <button
@@ -50,8 +82,6 @@ const Nav = ({ children }) => {
           <div className="flex items-center space-x-2 rounded-lg px-2 py-1.5">
             <Link
               href="/"
-              target="_blank"
-              rel="noopener noreferrer"
               className="rounded-lg p-1.5 hover:bg-stone-200 dark:hover:bg-stone-700"
             >
               <svg
@@ -125,7 +155,7 @@ const Nav = ({ children }) => {
             </Link>
           </div>
           <div className="grid gap-1">
-            {tabs.map(({ name, href, icon, tab }) => (
+            {tabsToRender.map(({ name, href, icon, tab }) => (
               <Link
                 key={name}
                 href={href}
