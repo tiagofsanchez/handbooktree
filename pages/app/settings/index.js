@@ -42,7 +42,7 @@ const SettingsPage = ({ userData }) => {
   return (
     <Layout>
       <div className="p-5 space-y-8">
-        <h1 className="text-3xl">The settings page</h1>
+        <h1 className="text-3xl font-extrabold">Your settings page</h1>
         <div>
           <Formik
             initialValues={{
