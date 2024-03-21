@@ -20,7 +20,7 @@ const Nav = ({ children }) => {
   const router = useRouter();
 
   const tabsToRender = useMemo(() => {
-    if (router.pathname === "/app/[id]") {
+    if (router.pathname === "/app/listing/[id]") {
       return [
         {
           name: "back to listings",
@@ -41,7 +41,18 @@ const Nav = ({ children }) => {
           icon: <Settings width={18} />,
         },
       ];
-    } else {
+    } else if (router.pathname === "/app/[id]/guides") { 
+      return [
+        {
+          name: "back to listings",
+          href: "/listings",
+          tab: "/app/listings",
+          icon: <ChevronLeft width={18} />,
+        }
+      ];
+    }
+    
+    else {
       return [
         {
           name: "Dashboard",

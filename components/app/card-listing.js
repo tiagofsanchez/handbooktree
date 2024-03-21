@@ -3,7 +3,7 @@ import Link from "next/link";
 const CardListing = ({ id, name, subdomain }) => {
   return (
     <div className="relative rounded-lg border border-stone-200 pb-10 shadow-md transition-all hover:shadow-xl dark:border-stone-700 dark:hover:border-white">
-      <Link href={`/${id}`}>
+      <Link href={`/listing/${id}`}>
         <div className="border-t border-stone-200 p-4 dark:border-stone-700">
           <h3 className="my-0 truncate font-cal text-xl font-bold tracking-wide dark:text-white">
             {name}
