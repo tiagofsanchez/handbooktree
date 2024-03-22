@@ -8,14 +8,17 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 // TODO:
 // Connect to supabase
-// - create supabase listings table
-// - define the RLS for that specific table
+// - DONE create supabase listings table
+// - DONE define the RLS for that specific table
 // - create the asycn function that will connect to the supabase table
+// - When the user updates that we should be able to get the dialogue out of the way
 
-export function CreateListingDialog() {
+export function CreateListingDialog({ userId }) {
+  const supabase = useSupabaseClient();
   const [data, setData] = useState({
     name: "",
     subdomain: "",
@@ -31,10 +34,27 @@ export function CreateListingDialog() {
     }));
   }, [data.name]);
 
+  async function addListing({ name, subdomain, userId }) {
+    try {
+      const updates = {
+        name,
+        subdomain,
+        profile_id: userId,
+        created_at: new Date().toISOString(),
+      };
+      console.log(updates)
+      let { error } = await supabase.from("listings").insert(updates);
+      if (error) throw error;
+    } catch (error) {
+      alert(JSON.stringify(error, null, 2));
+      console.log(error);
+    }
+  }
+
   function handleSubmit(event) {
-    event.preventDefault(); // prevent the form from submitting
-    console.log("Input value on submit: ");
-    console.log(data);
+    event.preventDefault();
+    const values = { name: data.name, subdomain: data.subdomain, userId}
+    addListing({...values});
   }
 
   return (
@@ -101,7 +121,7 @@ export function CreateListingDialog() {
             </div>
           </div>
           <div className="grid rounded-b-lg border-t border-stone-200 bg-stone-50  py-3 dark:border-stone-700 dark:bg-stone-800 px-8">
-            <Button variant="outline" type="submit" >
+            <Button variant="outline" type="submit">
               Save changes
             </Button>
           </div>

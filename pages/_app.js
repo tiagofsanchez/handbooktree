@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
     >
       <ThemeProvider
         attribute="class"
-        defaultTheme="dark"
+        defaultTheme="system"
         enableSystem
         disableTransitionOnChange
       >

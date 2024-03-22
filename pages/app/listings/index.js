@@ -8,10 +8,11 @@ import { list } from "postcss";
 // Done: button to add more listings
 // Done: Modal to add the listings
 
-const listingsPage = ({ userListings }) => {
+const listingsPage = ({ userListings, userId }) => {
+  
   return (
     <Layout>
-      <CreateListingDialog />
+      <CreateListingDialog userId={userId}/>
       <div className="p-5 space-y-8">
         <h1 className="text-3xl font-extrabold">Your listings</h1>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -42,6 +43,7 @@ export const getServerSideProps = async (ctx) => {
   return {
     props: {
       userListings: data,
+      userId: user?.user.id
     },
   };
 };
