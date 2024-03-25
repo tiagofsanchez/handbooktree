@@ -1,7 +1,6 @@
 import CardListing from "@/components/app/card-listing";
 import { CreateListingDialog } from "@/components/app/create-listing-dialog";
 import Layout from "@/components/app/Layout";
-import { Button } from "@/components/ui/button";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { CirclePlus } from "lucide-react";
 import { useRouter } from "next/router";
@@ -42,13 +41,13 @@ const ListingsPage = ({ userListings, userId }) => {
             ))}
         </div>
       </div>
-      <Button
+      <button
         variant="ghost"
-        className="fixed  bottom-4 right-4 bg-stone-200/30 rounded  p-2 hover:bg-gradient-to-br hover:to-pink-300 hover:from-rose-900"
+        className="fixed  bottom-4 right-4 bg-wite rounded  p-2 isolate aspect-video shadow backdrop-blur-3xl ring-1 ring-white"
         onClick={() => setOpen(!open)}
       >
-        <CirclePlus size={32} />
-      </Button>
+        <CirclePlus />
+      </button>
     </Layout>
   );
 };
