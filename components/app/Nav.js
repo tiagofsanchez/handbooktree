@@ -30,29 +30,37 @@ const Nav = ({ children }) => {
         },
         {
           name: "Guides",
-          href: `${router.asPath}/guides`,
-          tab: `/app${router.asPath}/guides`,
+          href: `${router.asPath}`,
+          tab: `${router.pathname}`,
           icon: <Notebook width={18} />,
         },
         {
           name: "Settings",
           href: `${router.asPath}/settings`,
-          tab: `/app${router.asPath}/settings`,
+          tab: `${router.pathname}/settings`,
           icon: <Settings width={18} />,
         },
       ];
-    } else if (router.pathname === "/app/[id]/guides") { 
+    } else if (router.pathname === "/app/listing/[id]/settings") {
       return [
         {
-          name: "back to listings",
-          href: "/listings",
-          tab: "/app/listings",
+          name: "back to listing",
+          href: `/listing/${router.query.id}`,
           icon: <ChevronLeft width={18} />,
-        }
+        },
+        {
+          name: "Guides",
+          href: `/listing/${router.query.id}`,
+          icon: <Notebook width={18} />,
+        },
+        {
+          name: "Settings",
+          href: `${router.asPath}`,
+          tab: `${router.pathname}`,
+          icon: <Settings width={18} />,
+        },
       ];
-    }
-    
-    else {
+    } else {
       return [
         {
           name: "Dashboard",
@@ -75,6 +83,8 @@ const Nav = ({ children }) => {
       ];
     }
   }, [router]);
+
+  console.log({ tabsToRender, router });
 
   return (
     <>

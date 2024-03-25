@@ -1,6 +1,11 @@
 import Layout from "@/components/app/Layout";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
+
+// TODOS: 
+// Show all guides
+
+
 const ListingPage = ({ listingData }) => {
   return (
     <Layout>

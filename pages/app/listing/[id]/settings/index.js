@@ -1,13 +1,13 @@
 import Layout from "@/components/app/Layout";
 
-const GuidesPage = () => {
+const SettingsPage = () => {
   return (
     <Layout>
       <div className="p-6 space-y-6">
-        <h1>Guides Page</h1>
+        <h1>Settings Page</h1>
       </div>
     </Layout>
   );
 };
 
-export default GuidesPage;
+export default SettingsPage;
