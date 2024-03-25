@@ -3,8 +3,9 @@ import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
 
 // TODOS: 
-// Show all guides  
-
+// Show all guides
+// Header for the page in order to have the page with the proper name in the page header  
+// Guides section with all the guides that the user will have been putting together
 
 
 const ListingPage = ({ listingData }) => {

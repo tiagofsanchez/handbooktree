@@ -1,11 +1,9 @@
-import { CirclePlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "sonner";
@@ -18,6 +16,7 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 // - DONE create the asycn function that will connect to the supabase table
 // - DONE connect to the toaster
 // - DONE When the user updates that we should be able to get the dialogue out of the way (was able to control the Dialogue)
+// - DONE with the update / refresh with the
 
 export function CreateListingDialog({ userId, open, setOpen, refreshData }) {
   const supabase = useSupabaseClient();
@@ -63,14 +62,6 @@ export function CreateListingDialog({ userId, open, setOpen, refreshData }) {
   return (
     <>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button
-            variant="ghost"
-            className="absolute bottom-4 right-4  bg-stone-200/30 rounded  p-2 hover:bg-gradient-to-br hover:to-pink-300 hover:from-rose-900"
-          >
-            <CirclePlus size={32} />{" "}
-          </Button>
-        </DialogTrigger>
         <DialogContent className="sm:max-w-[450px] border-stone-700 -p-6">
           <DialogHeader className="pt-8 px-8">
             <DialogTitle className="text-2xl">Add your listing</DialogTitle>
