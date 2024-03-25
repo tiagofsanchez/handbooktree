@@ -3,7 +3,8 @@ import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
 
 // TODOS: 
-// Show all guides
+// Show all guides  
+
 
 
 const ListingPage = ({ listingData }) => {

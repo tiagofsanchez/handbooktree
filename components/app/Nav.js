@@ -84,8 +84,6 @@ const Nav = ({ children }) => {
     }
   }, [router]);
 
-  console.log({ tabsToRender, router });
-
   return (
     <>
       <button
