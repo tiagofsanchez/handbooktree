@@ -15,11 +15,11 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 // Connect to supabase
 // - DONE create supabase listings table
 // - DONE define the RLS for that specific table
-// - create the asycn function that will connect to the supabase table
-// - connect to the toaster
-// - When the user updates that we should be able to get the dialogue out of the way
+// - DONE create the asycn function that will connect to the supabase table
+// - DONE connect to the toaster
+// - DONE When the user updates that we should be able to get the dialogue out of the way (was able to control the Dialogue)
 
-export function CreateListingDialog({ userId }) {
+export function CreateListingDialog({ userId, open, setOpen, refreshData }) {
   const supabase = useSupabaseClient();
   const [data, setData] = useState({
     name: "",
@@ -47,9 +47,10 @@ export function CreateListingDialog({ userId }) {
       let { error } = await supabase.from("listings").insert(updates);
       if (error) throw error;
       toast.success("You have added a new listing");
+      setTimeout(setOpen(false), 2000);
+      setTimeout(refreshData(), 2500);
     } catch (error) {
-      alert(JSON.stringify(error, null, 2));
-      toast.error(error.message)
+      toast.error(error.message);
     }
   }
 
@@ -61,7 +62,7 @@ export function CreateListingDialog({ userId }) {
 
   return (
     <>
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button
             variant="ghost"
