@@ -43,7 +43,7 @@ const ListingsPage = ({ userListings, userId }) => {
       </div>
       <button
         variant="ghost"
-        className="fixed  bottom-4 right-4 bg-wite rounded  p-2 isolate aspect-video shadow backdrop-blur-3xl ring-1 ring-white"
+        className="fixed  bottom-4 right-4 bg-wite rounded  p-2 isolate aspect-video shadow backdrop-blur-3xl ring-1 ring-stone-200/30"
         onClick={() => setOpen(!open)}
       >
         <CirclePlus />
