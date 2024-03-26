@@ -1,4 +1,5 @@
 import Layout from "@/components/app/Layout";
+import ListingPageHeader from "@/components/app/listinPageHeader";
 import InputForm from "@/components/form/inputForm";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import * as Yup from "yup";
@@ -6,6 +7,7 @@ import * as Yup from "yup";
 // TODO
 // DONE: Need to create a form that will help with renaming the app
 // DONE: Connect to the database
+// The header of this pages
 // Need to create a form that will be used to change the subdomain
 // Need to create a form that will help with deleting
 // The forms that I will be using here is the same form as in the other pieces
@@ -17,9 +19,9 @@ const nameSchema = Yup.object().shape({
 const SettingsPage = ({ listingData }) => {
   return (
     <Layout>
-      <div className="p-6 space-y-8">
-        <h1 className="text-3xl font-extrabold">Settings Page</h1>
-        <div>
+      <div className="p-5 ">
+        <ListingPageHeader listingData={listingData} />
+        <div className="mt-5">
           <InputForm
             input="name"
             inputValue={listingData.name}
