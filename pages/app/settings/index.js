@@ -1,4 +1,4 @@
-import Layout from "@/components/app/Layout";
+import Layout from "@/components/app/layout";
 import * as Yup from "yup";
 import { Field, Form, Formik } from "formik";
 import ErrorMessage from "@/components/form/errorMessage";
@@ -51,7 +51,6 @@ const SettingsPage = ({ userData }) => {
             validationSchema={fullNameSchema}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
-                // alert(JSON.stringify(values, null, 2));
                 updateProfileName({ ...values });
                 setSubmitting(false);
               }, 800);

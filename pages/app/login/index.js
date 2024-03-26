@@ -1,5 +1,5 @@
 import { useSession } from "@supabase/auth-helpers-react";
-import AuthForm from "@/components/app/AuthForm";
+import AuthForm from "@/components/app/authForm";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 

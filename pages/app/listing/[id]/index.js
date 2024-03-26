@@ -1,4 +1,4 @@
-import Layout from "@/components/app/Layout";
+import Layout from "@/components/app/layout";
 import { Separator } from "@/components/ui/separator";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
@@ -32,7 +32,7 @@ const ListingPage = ({ listingData }) => {
           </Link>
         </div>
         <Separator className="mt-4" />
-        <h2 className=" text-lg mt-5">Existing guides guides</h2>
+        <h2 className=" text-lg mt-5">Existing guides</h2>
       </div>
     </Layout>
   );

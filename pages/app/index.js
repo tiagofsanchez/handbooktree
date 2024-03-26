@@ -1,4 +1,4 @@
-import Layout from "@/components/app/Layout";
+import Layout from "@/components/app/layout";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
 const App = ({ userData }) => {

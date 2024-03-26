@@ -1,6 +1,6 @@
 import CardListing from "@/components/app/card-listing";
 import { CreateListingDialog } from "@/components/app/create-listing-dialog";
-import Layout from "@/components/app/Layout";
+import Layout from "@/components/app/layout";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { CirclePlus } from "lucide-react";
 import { useRouter } from "next/router";
