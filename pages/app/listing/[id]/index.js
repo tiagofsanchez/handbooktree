@@ -4,10 +4,10 @@ import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 
 // TODOS:
-
 // DONE: Header for the page in order to have the page with the proper name in the page header
 // DONE: Need to link to the page that the user actually built
 // Show all guides
+// Guides in supabase
 // Guides section with all the guides that the user will have been putting together
 
 const ListingPage = ({ listingData }) => {

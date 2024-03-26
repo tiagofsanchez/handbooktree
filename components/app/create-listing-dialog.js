@@ -17,6 +17,7 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 // - DONE connect to the toaster
 // - DONE When the user updates that we should be able to get the dialogue out of the way (was able to control the Dialogue)
 // - DONE with the update / refresh with the
+// Add description to this
 
 export function CreateListingDialog({ userId, open, setOpen, refreshData }) {
   const supabase = useSupabaseClient();

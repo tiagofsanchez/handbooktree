@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 // done: loading
 // done: error message on the form
 // done: and toast for when you receive the insert the information in supabase
-// abstract this away from the page into a reusable form component
+// abstract this form away from the page into a reusable form component so that I can use this in other places
 // done: connect to full_name on supabase
 // connect to email on supabase
 
