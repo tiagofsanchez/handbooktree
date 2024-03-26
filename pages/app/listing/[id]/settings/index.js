@@ -1,4 +1,4 @@
-import Layout from "@/components/app/layout";
+import Layout from "@/components/app/Layout";
 
 // TODO
 // Need to create a for that will help with deleting

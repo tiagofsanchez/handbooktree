@@ -1,4 +1,4 @@
-import Layout from "@/components/app/layout";
+import Layout from "@/components/app/Layout";
 import { Separator } from "@/components/ui/separator";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
