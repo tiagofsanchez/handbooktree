@@ -12,11 +12,18 @@ const InputForm = ({
   buttonAction,
   placeholder,
   validationSchema,
+  updateSupabase
 }) => {
   return (
     <Formik
       initialValues={{ [input]: inputValue }}
       validationSchema={validationSchema}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          updateSupabase({ ...values });
+          setSubmitting(false);
+        }, 800);
+      }}
     >
       {({
         values,

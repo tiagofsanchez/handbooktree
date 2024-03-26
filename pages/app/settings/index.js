@@ -32,11 +32,10 @@ const SettingsPage = ({ userData }) => {
       };
       let { error } = await supabase?.from("profiles")?.upsert(updates);
       if (error) throw error;
+      toast.success("You have update your profile");
     } catch (error) {
-      alert(JSON.stringify(error, null, 2));
-      console.log(error);
+      toast.error(error.message);
     }
-    toast.success("You have update your profile");
   }
 
   return (
