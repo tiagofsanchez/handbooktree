@@ -8,13 +8,9 @@ import {
 } from "@/components/ui/card";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { Notebook } from "lucide-react";
+import Link from "next/link";
 
 // TODOS:
-// DONE: Header for the page in order to have the page with the proper name in the page header
-// DONE: Need to link to the page that the user actually built
-// Show all guides
-// DONE: Guides in supabase
-// Guides UI 
 // What happens where there are no guides - show a no guide page
 // Guides section with all the guides that the user will have been putting together
 
@@ -22,17 +18,23 @@ const ListingPage = ({ listingData, guidesData }) => {
   return (
     <Layout>
       <div className="p-5">
-        <ListingPageHeader listingData={listingData} icon={<Notebook width={32} />} title="Guides" />
+        <ListingPageHeader
+          listingData={listingData}
+          icon={<Notebook width={32} />}
+          title="Guides"
+        />
         <div className="grid gap-5 mt-5">
           {guidesData.map((guide) => (
             <Card
               key={guide.id}
               className="border border-stone-200  shadow-md transition-all hover:shadow-xl dark:border-stone-700 dark:hover:border-white"
             >
-              <CardHeader>
-                <CardTitle>{guide.title}</CardTitle>
-                <CardDescription>{guide.description}</CardDescription>
-              </CardHeader>
+              <Link href={`/guide/${guide.id}`}>
+                <CardHeader>
+                  <CardTitle>{guide.title}</CardTitle>
+                  <CardDescription>{guide.description}</CardDescription>
+                </CardHeader>
+              </Link>
             </Card>
           ))}
         </div>

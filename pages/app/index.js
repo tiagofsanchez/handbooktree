@@ -1,6 +1,11 @@
 import Layout from "@/components/app/Layout";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
+
+// TODO: 
+// A nice explanation about the app for when you log in
+// Talk about the listings and how you can actually add listings to it
+
 const App = ({ userData }) => {
   return (
     <Layout >

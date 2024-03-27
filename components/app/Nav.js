@@ -5,17 +5,16 @@ import {
   Notebook,
   Home,
   Settings,
+  Edit,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 
 // TO DOS IN THIS NAV
-// DONE: menu button on and off
-// DONE: all the tabs that should be there
 // any other links that you might need
 
-const Nav = ({ children }) => {
+const Nav = ({ children, listing_id }) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const router = useRouter();
 
@@ -41,10 +40,49 @@ const Nav = ({ children }) => {
           icon: <Settings width={18} />,
         },
       ];
+    } else if (router.pathname === "/app/guide/[id]") {
+      return [
+        {
+          name: "back to guides",
+          href: `/listing/${listing_id}`,
+          icon: <ChevronLeft width={18} />,
+        },
+        {
+          name: "Editor",
+          href: `${router.asPath} `,
+          tab: `${router.pathname}`,
+          icon: <Edit width={18} />,
+        },
+        {
+          name: "Settings",
+          href: `${router.asPath}/settings`,
+          tab: `${router.pathname}/settings`,
+          icon: <Settings width={18} />,
+        },
+      ];
+    } else if (router.pathname === "/app/guide/[id]/settings") {
+      return [
+        {
+          name: "back to guides",
+          href: `/listing/${listing_id}`,
+          icon: <ChevronLeft width={18} />,
+        },
+        {
+          name: "Editor",
+          href: `/guide/${router.query.id} `,
+          icon: <Edit width={18} />,
+        },
+        {
+          name: "Settings",
+          href: `${router.asPath}`,
+          tab: `${router.pathname}`,
+          icon: <Settings width={18} />,
+        },
+      ];
     } else if (router.pathname === "/app/listing/[id]/settings") {
       return [
         {
-          name: "back to listing",
+          name: "back to listings",
           href: `/listing/${router.query.id}`,
           icon: <ChevronLeft width={18} />,
         },

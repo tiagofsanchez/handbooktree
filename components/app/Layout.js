@@ -9,7 +9,7 @@ import extractUsername from "../../utils/extractUsername";
 // DONE: get the sign out button with the redirect to the login page
 // Change the Nav for when the user
 
-const Layout = ({ children }) => {
+const Layout = ({ children, listing_id }) => {
   const supabase = useSupabaseClient();
   const router = useRouter();
   const session = useSession();
@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
 
   return (
     <div>
-      <Nav>
+      <Nav listing_id={listing_id}>
         <div className="flex justify-between items-center gap-2 mt-3">
           <p className="text-sm">{userName}</p>
           <button onClick={onSignOut}>
