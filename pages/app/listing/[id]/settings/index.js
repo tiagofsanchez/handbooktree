@@ -8,8 +8,6 @@ import { Toaster, toast } from "sonner";
 import * as Yup from "yup";
 
 // TODO
-// Validate the subdomain in the form
-// Create the function to update the subdomain
 // Need to create a form that will help with deleting
 // The forms that I will be using here is the same form as in the other pieces
 
@@ -52,6 +50,24 @@ const SettingsPage = ({ listingData, id }) => {
       toast.error(error.message);
     }
   }
+  async function updateListingSubdomain({ subdomain }) {
+    try {
+      const updates = {
+        id: id,
+        subdomain,
+        updated_at: new Date().toISOString(),
+      };
+      let { error } = await supabase
+        .from("listings")
+        .update(updates)
+        .eq("id", id);
+      if (error) throw error;
+      toast.success("You have update your listing subdomain");
+      setTimeout(refreshData(), 2500);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
 
   return (
     <Layout>
@@ -75,10 +91,10 @@ const SettingsPage = ({ listingData, id }) => {
             title="Subdomain"
             description="Redefine the subdomain of your app"
             placeholder="The subdomain of your app..."
-            helpMessage="Subdomain is the name you will use in the url."
+            helpMessage="Subdomain must only contain lowercase letters, numbers, and hyphens."
             buttonAction="Save changes"
             validationSchema={subdomainSchema}
-            // updateSupabase={updateListingName}
+            updateSupabase={updateListingSubdomain}
           />
         </div>
       </div>
