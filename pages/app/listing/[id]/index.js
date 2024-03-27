@@ -1,5 +1,5 @@
 import Layout from "@/components/app/Layout";
-import ListingPageHeader from "@/components/app/listinPageHeader";
+import ListingPageHeader from "@/components/app/listingPageHeader";
 import {
   Card,
   CardDescription,
@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
+import { Notebook } from "lucide-react";
 
 // TODOS:
 // DONE: Header for the page in order to have the page with the proper name in the page header
@@ -21,7 +22,7 @@ const ListingPage = ({ listingData, guidesData }) => {
   return (
     <Layout>
       <div className="p-5">
-        <ListingPageHeader listingData={listingData} />
+        <ListingPageHeader listingData={listingData} icon={<Notebook width={32} />} title="Guides" />
         <div className="grid gap-5 mt-5">
           {guidesData.map((guide) => (
             <Card

@@ -1,7 +1,7 @@
 import { Separator } from "../ui/separator";
 import Link from "next/link";
 
-const ListingPageHeader = ({listingData}) => {
+const ListingPageHeader = ({listingData, icon, title}) => {
     const currentHost =
     process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
       ? `https://${listingData.subdomain}.brokertree.co`
@@ -9,10 +9,7 @@ const ListingPageHeader = ({listingData}) => {
     return (
       <>
         <div className="space-y-2">
-          <h1 className="text-3xl font-extrabold capitalize ">
-            {listingData.name}
-          </h1>
-          <Link
+        <Link
             href={currentHost}
             target="_blank"
             rel="noopener noreferrer"
@@ -20,6 +17,11 @@ const ListingPageHeader = ({listingData}) => {
           >
             {listingData.subdomain}.{process.env.NEXT_PUBLIC_ROOT_DOMAIN} ↗
           </Link>
+          <h1 className="text-3xl font-extrabold capitalize flex gap-2 items-center  ">
+            {icon}
+            {listingData.name} 
+          </h1>
+          <p>{title}</p>
         </div>
         <Separator className="mt-4" />{" "}
       </>

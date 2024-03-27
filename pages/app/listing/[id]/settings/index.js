@@ -1,8 +1,9 @@
 import Layout from "@/components/app/Layout";
-import ListingPageHeader from "@/components/app/listinPageHeader";
+import ListingPageHeader from "@/components/app/listingPageHeader";
 import InputForm from "@/components/form/inputForm";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { Settings } from "lucide-react";
 import { useRouter } from "next/router";
 import { Toaster, toast } from "sonner";
 import * as Yup from "yup";
@@ -72,7 +73,7 @@ const SettingsPage = ({ listingData, id }) => {
   return (
     <Layout>
       <div className="p-5 ">
-        <ListingPageHeader listingData={listingData} />
+        <ListingPageHeader listingData={listingData} icon={<Settings width={32} />} title="Settings" />
         <div className="mt-5 grid gap-5">
           <InputForm
             input="name"
