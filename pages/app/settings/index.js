@@ -1,17 +1,18 @@
 import Layout from "@/components/app/Layout";
 import * as Yup from "yup";
 import { Field, Form, Formik } from "formik";
-import ErrorMessage from "@/components/form/ErrorMessage";
+import ErrorMessage from "@/components/form/errorMessage";
 import LoadingDots from "@/components/icons/loading-dots";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Toaster, toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 // done: button styling
 // done: loading
 // done: error message on the form
 // done: and toast for when you receive the insert the information in supabase
-// abstract this away from the page into a reusable form component
+// abstract this form away from the page into a reusable form component so that I can use this in other places
 // done: connect to full_name on supabase
 // connect to email on supabase
 
@@ -31,17 +32,16 @@ const SettingsPage = ({ userData }) => {
       };
       let { error } = await supabase?.from("profiles")?.upsert(updates);
       if (error) throw error;
+      toast.success("You have update your profile");
     } catch (error) {
-      alert(JSON.stringify(error, null, 2));
-      console.log(error);
+      toast.error(error.message);
     }
-    toast.success("You have update your profile");
   }
 
   return (
     <Layout>
       <div className="p-5 space-y-8">
-        <h1 className="text-3xl">The settings page</h1>
+        <h1 className="text-3xl font-extrabold">Your settings page</h1>
         <div>
           <Formik
             initialValues={{
@@ -50,7 +50,6 @@ const SettingsPage = ({ userData }) => {
             validationSchema={fullNameSchema}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
-                // alert(JSON.stringify(values, null, 2));
                 updateProfileName({ ...values });
                 setSubmitting(false);
               }, 800);
@@ -97,18 +96,19 @@ const SettingsPage = ({ userData }) => {
                     <p className="text-sm text-stone-500 dark:text-stone-400">
                       Please use 32 characters maximum.
                     </p>
-                    <button
+                    <Button
                       type="submit"
                       onSubmit={handleSubmit}
                       disabled={isSubmitting && !(dirty && isValid)}
-                      className=" px-2 py-2 w-32 text-white  rounded justify-self-end hover:bg-stone-600 border border-stone-200 bg-white dark:border-stone-700 dark:bg-black"
+                      className="w-32"
+                      variant="outline"
                     >
                       {isSubmitting ? (
                         <LoadingDots color="#FF6A95" />
                       ) : (
                         <p>Save changes</p>
                       )}
-                    </button>
+                    </Button>
                   </div>
                 </Form>
                 {/* <pre className="mt-10 mb-40 bg-slate-200/20 p-5">
