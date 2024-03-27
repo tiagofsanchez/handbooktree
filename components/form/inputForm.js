@@ -82,13 +82,13 @@ const InputForm = ({
                 </Button>
               </div>
             </Form>
-            {/* <pre className="mt-10 mb-40 bg-slate-200/20 p-5">
+            <pre className="mt-10 mb-40 bg-slate-200/20 p-5">
               {JSON.stringify(
                 { values, errors, touched, isSubmitting, dirty, isValid },
                 null,
                 4
               )}
-            </pre> */}
+            </pre>
           </>
         );
       }}

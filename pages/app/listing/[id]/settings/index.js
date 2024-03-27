@@ -8,10 +8,8 @@ import { Toaster, toast } from "sonner";
 import * as Yup from "yup";
 
 // TODO
-// DONE: Need to create a form that will help with renaming the app
-// DONE: Connect to the database
-// DONE: The header of this pages
-// DONE: Need to create a form that will be used to change the subdomain
+// Validate the subdomain in the form
+// Create the function to update the subdomain
 // Need to create a form that will help with deleting
 // The forms that I will be using here is the same form as in the other pieces
 
@@ -19,7 +17,12 @@ const nameSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
 });
 const subdomainSchema = Yup.object().shape({
-  subdomain: Yup.string().required("Required"),
+  subdomain: Yup.string()
+    .required("Required")
+    .matches(
+      /^[a-z0-9-]+$/,
+      "Must only contain lowercase letters, numbers, and hyphens"
+    ),
 });
 
 const SettingsPage = ({ listingData, id }) => {
@@ -75,7 +78,7 @@ const SettingsPage = ({ listingData, id }) => {
             helpMessage="Subdomain is the name you will use in the url."
             buttonAction="Save changes"
             validationSchema={subdomainSchema}
-            updateSupabase={updateListingName}
+            // updateSupabase={updateListingName}
           />
         </div>
       </div>
