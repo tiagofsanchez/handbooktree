@@ -20,11 +20,11 @@ const TipTap = ({ description, placeholder }) => {
         },
       }),
       Placeholder.configure({
+        emptyEditorClass: "is-editor-empty",
         placeholder: placeholder,
-        HTMLAttributes: { 
-            class:`text-white`
-        }
-      })
+        emptyEditorClass:
+          "cursor-text before:content-[attr(data-placeholder)] before:absolute before:top-4 before:left-4 before:text-mauve-11 before:opacity-50 before-pointer-events-none",
+      }),
     ],
     content: description,
     placeholder: "Start writing your content here",
