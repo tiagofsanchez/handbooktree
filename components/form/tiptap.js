@@ -1,10 +1,9 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./toolbar";
-import Heading from "@tiptap/extension-heading";
-import BulletList from "@tiptap/extension-bullet-list";
+import Placeholder from "@tiptap/extension-placeholder";
 
-const TipTap = ({ description }) => {
+const TipTap = ({ description, placeholder }) => {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -20,8 +19,15 @@ const TipTap = ({ description }) => {
           },
         },
       }),
+      Placeholder.configure({
+        placeholder: placeholder,
+        HTMLAttributes: { 
+            class:`text-white`
+        }
+      })
     ],
     content: description,
+    placeholder: "Start writing your content here",
     editorProps: {
       attributes: {
         class:

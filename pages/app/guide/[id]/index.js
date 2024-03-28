@@ -3,11 +3,13 @@ import TipTap from "@/components/form/tiptap";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
 const GuidePage = ({ guideData }) => {
-  
   return (
     <Layout listing_id={guideData.listing_id}>
       <div className="p-5">
-      <TipTap description={guideData.description}/>
+        <TipTap
+          description={guideData.description}
+          placeholder="Your guide..."
+        />
       </div>
     </Layout>
   );

@@ -39,7 +39,7 @@ const InputForm = ({
         return (
           <>
             <Form
-              // onSubmit={handleSubmit}
+              onSubmit={handleSubmit}
               className=" rounded border border-stone-200 bg-white dark:border-stone-700 dark:bg-black"
             >
               <div className="grid p-8 gap-4 sm:w-2/3">
