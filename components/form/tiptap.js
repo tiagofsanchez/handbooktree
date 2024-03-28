@@ -7,19 +7,21 @@ import BulletList from "@tiptap/extension-bullet-list";
 const TipTap = ({ description }) => {
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({}),
-      Heading.configure({
-        HTMLAttributes: {
-          class: `text-2xl`,
+      StarterKit.configure({
+        heading: {
+          HTMLAttributes: {
+            class: `text-2xl`,
+            levels: [1],
+          },
         },
-      }),
-      BulletList.configure({
-        HTMLAttributes: {
-          class: `list-disc p-2`,
+        bulletList: {
+          HTMLAttributes: {
+            class: `list-disc p-2`,
+          },
         },
       }),
     ],
-    content: { description },
+    content: description,
     editorProps: {
       attributes: {
         class:
