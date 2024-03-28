@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
-import { Notebook } from "lucide-react";
+import { CirclePlus, Notebook } from "lucide-react";
 import Link from "next/link";
 
 // TODOS:
@@ -39,6 +39,15 @@ const ListingPage = ({ listingData, guidesData }) => {
           ))}
         </div>
       </div>
+      <button
+        variant="ghost"
+        className="fixed bottom-4 right-4 bg-wite rounded  p-2 isolate shadow backdrop-blur-3xl ring-1 ring-stone-200/30 flex gap-2"
+        // onClick={() => setOpen(!open)}
+      >
+      
+        <CirclePlus />
+        add a guide
+      </button>
     </Layout>
   );
 };
