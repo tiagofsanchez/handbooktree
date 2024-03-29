@@ -3,7 +3,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./toolbar";
 import Placeholder from "@tiptap/extension-placeholder";
 
-const TipTap = ({ description, placeholder }) => {
+const TipTap = ({ description, placeholder, handleChange }) => {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -39,7 +39,7 @@ const TipTap = ({ description, placeholder }) => {
   return (
     <div>
       <Toolbar editor={editor} />
-      <EditorContent editor={editor} />
+      <EditorContent editor={editor} onChange={handleChange} />
     </div>
   );
 };
