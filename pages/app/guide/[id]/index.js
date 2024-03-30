@@ -1,7 +1,7 @@
 import Layout from "@/components/app/Layout";
 import TipTap from "@/components/form/tiptap";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
-
+import { useState } from "react";
 
 // TODO
 // Try to implement the Formik framework with TipTap
@@ -9,12 +9,19 @@ import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 // Add title for inputForm
 
 const GuidePage = ({ guideData }) => {
+  const [editorContent, setEditorContent] = useState(guideData.description);
+  const handleContentChange = (reason) => {
+    setEditorContent(reason);
+  };
+
+  console.log(editorContent)
   return (
     <Layout listing_id={guideData.listing_id}>
       <div className="p-5">
         <TipTap
-          description={guideData.description}
+          description={editorContent}
           placeholder="Your guide..."
+          onChange={(newContent) => handleContentChange(newContent)}
         />
       </div>
     </Layout>
