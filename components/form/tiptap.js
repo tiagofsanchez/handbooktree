@@ -4,7 +4,7 @@ import Toolbar from "./toolbar";
 import Placeholder from "@tiptap/extension-placeholder";
 
 const TipTap = ({ description, placeholder, onChange }) => {
-  const handleChange = (newContent => onChange(newContent))
+  const handleChange = (newContent) => onChange(newContent);
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -16,7 +16,7 @@ const TipTap = ({ description, placeholder, onChange }) => {
         },
         bulletList: {
           HTMLAttributes: {
-            class: `list-disc p-2`,
+            class: `list-disc p-4`,
           },
         },
       }),
@@ -38,7 +38,6 @@ const TipTap = ({ description, placeholder, onChange }) => {
     onUpdate: ({ editor }) => {
       handleChange(editor.getHTML());
     },
-  
   });
 
   return (
