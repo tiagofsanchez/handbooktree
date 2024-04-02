@@ -12,7 +12,7 @@ const InputForm = ({
   buttonAction,
   placeholder,
   validationSchema,
-  updateSupabase
+  updateSupabase,
 }) => {
   return (
     <Formik
@@ -72,7 +72,6 @@ const InputForm = ({
                   onSubmit={handleSubmit}
                   disabled={isSubmitting && !(dirty && isValid)}
                   className="w-32"
-               
                 >
                   {isSubmitting ? (
                     <LoadingDots color="#FF6A95" />

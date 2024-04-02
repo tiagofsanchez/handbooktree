@@ -9,6 +9,7 @@ import { toast, Toaster } from "sonner";
 import GuidePageHeader from "@/components/app/guidePageHeader";
 import { Notebook } from "lucide-react";
 import InputForm from "@/components/form/inputForm";
+import { useRouter } from "next/router";
 
 // TODO
 // Done: Managing state
@@ -27,7 +28,33 @@ const GuidePage = ({ guideData }) => {
     setEditorContent(reason);
   };
 
+  const router = useRouter();
+  const refreshData = () => {
+    void router.replace(router.asPath, undefined, {
+      scroll: false,
+    });
+  };
+
   const sanitizedHTML = DOMPurify?.sanitize(editorContent);
+
+  async function updateGuideTitle({title }) {
+    try {
+      const updates = {
+        id: guideData.id,
+        updated_at: new Date().toISOString(),
+        title,
+      };
+      let { error } = await supabase
+        .from("guides")
+        .update(updates)
+        .eq("id", guideData.id);
+      if (error) throw error;
+      toast.success("You have updated your guide title");
+      setTimeout(refreshData(), 2500);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
 
   async function updateGuideDescription({ id, description }) {
     try {
@@ -60,7 +87,15 @@ const GuidePage = ({ guideData }) => {
           icon={<Notebook width={32} />}
         />
         <div className="mt-5 space-y-5">
-          <InputForm />
+          <InputForm
+            input="title"
+            inputValue={guideData.title}
+            title="Guide title"
+            description="Change the title for this guide"
+            helpMessage="Make the name intuitive"
+            buttonAction="Update"
+            updateSupabase={updateGuideTitle}
+          />
           <form onSubmit={handleSubmit} className="">
             <TipTap
               name="tiptap"
