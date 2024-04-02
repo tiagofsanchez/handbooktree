@@ -24,7 +24,7 @@ const TipTap = ({ description, placeholder, onChange }) => {
         emptyEditorClass: "is-editor-empty",
         placeholder: placeholder,
         emptyEditorClass:
-          "cursor-text before:content-[attr(data-placeholder)] before:absolute before:top-4 before:left-4 before:text-mauve-11 before:opacity-50 before-pointer-events-none",
+          "cursor-text before:content-[attr(data-placeholder)] before:absolute before:top-8 before:left-8 before:text-mauve-11 before:opacity-50 before-pointer-events-none",
       }),
     ],
     content: description,
