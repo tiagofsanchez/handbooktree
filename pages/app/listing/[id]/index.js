@@ -33,7 +33,6 @@ const ListingPage = ({ listingData, guidesData }) => {
               <Link href={`/guide/${guide.id}`}>
                 <CardHeader>
                   <CardTitle>{guide.title}</CardTitle>
-                  <CardDescription>{guide.description}</CardDescription>
                 </CardHeader>
               </Link>
             </Card>

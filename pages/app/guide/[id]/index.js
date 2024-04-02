@@ -12,7 +12,9 @@ import { toast, Toaster } from "sonner";
 // Done: Wrap this in a form so that it is able to save stuff
 // Done: Connect to supabase for the backend where this will be saved
 // Done: Think about what is the best option to save getHTML or getJSON and
+
 // Add title for inputForm
+// Add header to the guides page
 
 const GuidePage = ({ guideData }) => {
   const supabase = useSupabaseClient();
@@ -49,13 +51,18 @@ const GuidePage = ({ guideData }) => {
   return (
     <Layout listing_id={guideData.listing_id}>
       <div className="p-5">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-2">
           <TipTap
+            name="tiptap"
             description={editorContent}
             placeholder="Your guide..."
             onChange={(newContent) => handleContentChange(newContent)}
           />
-          <Button type="submit">Update</Button>
+          <div className="flex justify-end">
+            <Button type="submit" className="w-32 ">
+              Update
+            </Button>
+          </div>
         </form>
         {/* <div
           className="bg-stone-500 mt-5 p-3"
