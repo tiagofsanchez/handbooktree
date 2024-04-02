@@ -20,7 +20,7 @@ const ListingsPage = ({ userListings, userId }) => {
   };
 
   return (
-    <Layout >
+    <Layout>
       <CreateListingDialog
         userId={userId}
         open={open}
@@ -46,7 +46,6 @@ const ListingsPage = ({ userListings, userId }) => {
         className="fixed bottom-4 right-4 bg-wite rounded  p-2 isolate shadow backdrop-blur-3xl ring-1 ring-stone-200/30 flex gap-2"
         onClick={() => setOpen(!open)}
       >
-      
         <CirclePlus />
         add a listing
       </button>
