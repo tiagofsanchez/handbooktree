@@ -32,7 +32,7 @@ const TipTap = ({ description, placeholder, onChange }) => {
     editorProps: {
       attributes: {
         class:
-          "2 p-4 flex-1 rounded rounded-t-none border border-stone-300 text-sm text-stone-900 placeholder-stone-300 focus:border-stone-500 focus:outline-none focus:ring-stone-500 dark:border-stone-600 dark:bg-black dark:text-white dark:placeholder-stone-700",
+          "2 p-8 flex-1  border border-stone-200 border-b-0 bg-white dark:border-stone-700 dark:bg-black text-sm text-stone-900 placeholder-stone-300 focus:border-stone-500 focus:outline-none focus:ring-stone-500 dark:text-white dark:placeholder-stone-700",
       },
     },
     onUpdate: ({ editor }) => {

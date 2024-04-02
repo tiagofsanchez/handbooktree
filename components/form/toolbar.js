@@ -6,7 +6,7 @@ const Toolbar = ({ editor }) => {
     return null;
   }
   return (
-    <div className="mb-2 p-1 border border-stone-300 dark:border-stone-600 dark:bg-black rounded rounded-b-none flex gap-1">
+    <div className=" p-1 border border-b-0 border-stone-200 bg-white dark:border-stone-700 dark:bg-black rounded rounded-b-none flex gap-1">
       <Toggle
         size="sm"
         pressed={editor.isActive("heading")}
