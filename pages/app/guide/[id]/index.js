@@ -6,6 +6,9 @@ import DOMPurify from "isomorphic-dompurify";
 import { Button } from "@/components/ui/button";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { toast, Toaster } from "sonner";
+import GuidePageHeader from "@/components/app/guidePageHeader";
+import { Separator } from "@/components/ui/separator";
+import { Notebook } from "lucide-react";
 
 // TODO
 // Done: Managing state
@@ -51,6 +54,8 @@ const GuidePage = ({ guideData }) => {
   return (
     <Layout listing_id={guideData.listing_id}>
       <div className="p-5">
+        <GuidePageHeader title={guideData.title}  icon={<Notebook width={32} />}/>
+        <div className="mt-5">
         <form onSubmit={handleSubmit} className="space-y-2">
           <TipTap
             name="tiptap"
@@ -64,6 +69,7 @@ const GuidePage = ({ guideData }) => {
             </Button>
           </div>
         </form>
+        </div>
         {/* <div
           className="bg-stone-500 mt-5 p-3"
           dangerouslySetInnerHTML={{ __html: sanitizedHTML }}

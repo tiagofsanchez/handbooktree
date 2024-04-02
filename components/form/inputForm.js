@@ -72,7 +72,7 @@ const InputForm = ({
                   onSubmit={handleSubmit}
                   disabled={isSubmitting && !(dirty && isValid)}
                   className="w-32"
-                  variant="outline"
+               
                 >
                   {isSubmitting ? (
                     <LoadingDots color="#FF6A95" />
