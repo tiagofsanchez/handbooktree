@@ -17,7 +17,7 @@ const ListingPageHeader = ({ listingData, icon, title }) => {
         >
           {listingData.subdomain}.{process.env.NEXT_PUBLIC_ROOT_DOMAIN} ↗
         </Link>
-        <h1 className="text-3xl font-extrabold capitalize flex gap-2 items-center  ">
+        <h1 className="text-3xl font-extrabold flex gap-2 items-center  ">
           {icon}
           {listingData.name}
         </h1>

@@ -9,7 +9,7 @@ import { Toaster, toast } from "sonner";
 import * as Yup from "yup";
 
 // TODO
-// Need to create a form that will help with deleting
+// DONE: Need to create a form that will help with deleting
 // DONE: The forms that I will be using here is the same form as in the other pages where I will need a form
 
 const nameSchema = Yup.object().shape({
