@@ -10,11 +10,12 @@ import * as Yup from "yup";
 
 // TODO
 // Need to create a form that will help with deleting
-// The forms that I will be using here is the same form as in the other pages where I will need a form
+// DONE: The forms that I will be using here is the same form as in the other pages where I will need a form
 
 const nameSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
 });
+
 const subdomainSchema = Yup.object().shape({
   subdomain: Yup.string()
     .required("Required")
@@ -33,6 +34,14 @@ const SettingsPage = ({ listingData, id }) => {
     });
   };
 
+  const deleteSchema = Yup.object().shape({
+    name: Yup.string()
+      .required("Required")
+      .matches(
+        new RegExp(`^${listingData.name}$`, "i"),
+        `You need to type '${listingData.name} to delete the listing'`
+      ),
+  });
   async function updateListingName({ name }) {
     try {
       const updates = {
@@ -70,16 +79,31 @@ const SettingsPage = ({ listingData, id }) => {
     }
   }
 
+  async function deleteListing({ name }) {
+    try {
+      let { error } = await supabase.from("listings").delete().eq("name", name);
+      if (error) throw error;
+      toast.success("You have deleted your listing");
+      setTimeout(() => router.push("/listings"), 3000);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
   return (
     <Layout>
       <div className="p-5 ">
-        <ListingPageHeader listingData={listingData} icon={<Settings width={32} />} title="Settings" />
+        <ListingPageHeader
+          listingData={listingData}
+          icon={<Settings width={32} />}
+          title="Settings"
+        />
         <div className="mt-5 grid gap-5">
           <InputForm
             input="name"
             inputValue={listingData.name}
             title="Name"
-            description="Redefine the name of your app"
+            description="Redefine the name of your listing"
             placeholder="The name of your app..."
             helpMessage="This will be used for SEO."
             buttonAction="Save changes"
@@ -90,12 +114,24 @@ const SettingsPage = ({ listingData, id }) => {
             input="subdomain"
             inputValue={listingData.subdomain}
             title="Subdomain"
-            description="Redefine the subdomain of your app"
+            description="Redefine the subdomain of your listing"
             placeholder="The subdomain of your app..."
             helpMessage="Subdomain must only contain lowercase letters, numbers, and hyphens."
             buttonAction="Save changes"
             validationSchema={subdomainSchema}
             updateSupabase={updateListingSubdomain}
+          />
+          <InputForm
+            input="name"
+            variant="delete"
+            inputValue=""
+            title="Delete this listing"
+            description="Delete this listing"
+            placeholder={`Type ${listingData.name} to delete`}
+            helpMessage="Deleting this listing will remove it completely."
+            buttonAction="Delete"
+            validationSchema={deleteSchema}
+            updateSupabase={deleteListing}
           />
         </div>
       </div>

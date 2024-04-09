@@ -6,6 +6,7 @@ import LoadingDots from "../icons/loading-dots";
 const InputForm = ({
   input,
   inputValue,
+  variant,
   title,
   description,
   helpMessage,
@@ -14,6 +15,16 @@ const InputForm = ({
   validationSchema,
   updateSupabase,
 }) => {
+  let formClasses =
+    "rounded border border-stone-200 bg-white dark:border-stone-700 dark:bg-black";
+
+  let titleClasses = "text-xl font-bold";
+
+  if (variant === "delete") {
+    formClasses = "rounded border bg-white  dark:bg-black border-red-800";
+    titleClasses = "text-xl font-bold text-red-800";
+  }
+
   return (
     <Formik
       initialValues={{ [input]: inputValue }}
@@ -38,12 +49,9 @@ const InputForm = ({
       }) => {
         return (
           <>
-            <Form
-              onSubmit={handleSubmit}
-              className=" rounded border border-stone-200 bg-white dark:border-stone-700 dark:bg-black"
-            >
+            <Form onSubmit={handleSubmit} className={formClasses}>
               <div className="grid p-8 gap-4 sm:w-2/3">
-                <h2 htmlFor="" className="text-xl font-bold">
+                <h2 htmlFor="" className={titleClasses}>
                   {title}
                 </h2>
                 <label className="text-sm text-stone-500 dark:text-stone-400">
@@ -69,6 +77,7 @@ const InputForm = ({
                 </p>
                 <Button
                   type="submit"
+                  variant={variant === "delete" ? "destructive" : ""}
                   onSubmit={handleSubmit}
                   disabled={isSubmitting && !(dirty && isValid)}
                   className="w-32"
