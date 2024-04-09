@@ -9,6 +9,7 @@ import {
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { CirclePlus, Notebook } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 // TODOS:
 // What happens where there are no guides - show a no guide page
@@ -16,6 +17,8 @@ import Link from "next/link";
 // Adding guides drawer
 
 const ListingPage = ({ listingData, guidesData }) => {
+  const [open, setOpen] = useState(false);
+  console.log(open)
   return (
     <Layout>
       <div className="p-5">
@@ -42,7 +45,7 @@ const ListingPage = ({ listingData, guidesData }) => {
       <button
         variant="ghost"
         className="fixed bottom-4 right-4 bg-wite rounded  p-2 isolate shadow backdrop-blur-3xl ring-1 ring-stone-200/30 flex gap-2"
-        // onClick={() => setOpen(!open)}
+        onClick={() => setOpen(!open)}
       >
         <CirclePlus />
         add a guide
