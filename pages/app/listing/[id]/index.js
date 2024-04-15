@@ -1,8 +1,8 @@
 import Layout from "@/components/app/Layout";
+import CreateGuideDialog from "@/components/app/create-guide-dialog";
 import ListingPageHeader from "@/components/app/listingPageHeader";
 import {
   Card,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -18,9 +18,9 @@ import { useState } from "react";
 
 const ListingPage = ({ listingData, guidesData }) => {
   const [open, setOpen] = useState(false);
-  console.log(open)
   return (
     <Layout>
+      <CreateGuideDialog open={open} setOpen={setOpen} />
       <div className="p-5">
         <ListingPageHeader
           listingData={listingData}
