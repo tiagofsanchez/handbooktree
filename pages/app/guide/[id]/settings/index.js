@@ -1,6 +1,10 @@
 import Layout from "@/components/app/Layout";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
+
+// TODO
+// Delete the guide on the settings
+
 const SettingsPage = ({ guideData }) => {
   return (
     <Layout listing_id={guideData.listing_id}>

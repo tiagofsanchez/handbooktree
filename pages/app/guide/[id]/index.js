@@ -12,14 +12,6 @@ import InputForm from "@/components/form/inputForm";
 import { useRouter } from "next/router";
 
 // TODO
-// Done: Managing state
-// Done: Wrap this in a form so that it is able to save stuff
-// Done: Connect to supabase for the backend where this will be saved
-// Done: Think about what is the best option to save getHTML or getJSON and
-
-// Add title for inputForm
-// Add header to the guides page
-// Abstract the TipTap form so that I can use that elsewhere with ease
 
 const GuidePage = ({ guideData }) => {
   const supabase = useSupabaseClient();
