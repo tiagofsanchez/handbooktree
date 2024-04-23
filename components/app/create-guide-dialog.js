@@ -2,18 +2,43 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 import { Dialog, DialogContent, DialogHeader } from "../ui/dialog";
 import { useState } from "react";
 import { Button } from "../ui/button";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { Toaster, toast } from "sonner";
+import { useRouter } from "next/router";
 
 // TODO
 // UI for the form to create the title of guide
 // UI needs to be similar to the UI of the other Dialog
 // Create the title and refresh on the page that was just created so that the user can do the proper write up for the guide.
 
-const CreateGuideDialog = ({ open, setOpen }) => {
+const CreateGuideDialog = ({ open, setOpen, listingId }) => {
+
+  const supabase = useSupabaseClient();
+  const router = useRouter()
   const [data, setTitle] = useState({ title: "" });
+
+  async function addGuide({title, listingId}) { 
+    try { 
+      const updates = { 
+        title, 
+        listing_id: listingId, 
+        created_at: new Date().toISOString(),
+      }
+      let{ error, data } = await supabase.from("guides").insert(updates).select(); 
+      if(error) throw error; 
+      toast.success("You have added a new guide");
+      setTimeout(setOpen(false), 2000);
+      router.push(`/guide/${data[0].id}`)
+    } catch (error) {
+      toast.error(error.message);
+      setTimeout(setOpen(false), 2000);
+    }
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(data);
+    const values = { title: data.title, listingId}
+    addGuide({...values})
   }
 
   return (
@@ -53,6 +78,7 @@ const CreateGuideDialog = ({ open, setOpen }) => {
           </form>
         </DialogContent>
       </Dialog>
+      <Toaster />
     </>
   );
 };

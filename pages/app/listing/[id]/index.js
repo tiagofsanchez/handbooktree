@@ -1,11 +1,7 @@
 import Layout from "@/components/app/Layout";
 import CreateGuideDialog from "@/components/app/create-guide-dialog";
 import ListingPageHeader from "@/components/app/listingPageHeader";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { CirclePlus, Notebook } from "lucide-react";
 import Link from "next/link";
@@ -16,11 +12,11 @@ import { useState } from "react";
 // DONE: Guides section with all the guides that the user will have been putting together
 // Adding guides drawer
 
-const ListingPage = ({ listingData, guidesData }) => {
+const ListingPage = ({ listingData, guidesData, listingId }) => {
   const [open, setOpen] = useState(false);
   return (
     <Layout>
-      <CreateGuideDialog open={open} setOpen={setOpen} />
+      <CreateGuideDialog open={open} setOpen={setOpen} listingId={listingId} />
       <div className="p-5">
         <ListingPageHeader
           listingData={listingData}
@@ -72,6 +68,7 @@ export const getServerSideProps = async (ctx) => {
     props: {
       listingData: data[0],
       guidesData: guides,
+      listingId: id,
     },
   };
 };
