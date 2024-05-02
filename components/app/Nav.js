@@ -6,6 +6,7 @@ import {
   Home,
   Settings,
   Edit,
+  Captions,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -28,6 +29,39 @@ const Nav = ({ children, listing_id }) => {
           icon: <ChevronLeft width={18} />,
         },
         {
+          name: "Description",
+          href: `${router.asPath}`,
+          tab: `${router.pathname}`,
+          icon: <Captions width={18} />,
+        },
+        {
+          name: "Guides",
+          href: `${router.asPath}/guides`,
+          tab: `${router.pathname}/guides`,
+          icon: <Notebook width={18} />,
+        },
+        {
+          name: "Settings",
+          href: `${router.asPath}/settings`,
+          tab: `${router.pathname}/settings`,
+          icon: <Settings width={18} />,
+        },
+      ];
+    } else if (router.pathname === "/app/listing/[id]/guides") {
+      return [
+        {
+          name: "back to listings",
+          href: "/listings",
+          tab: "/app/listings",
+          icon: <ChevronLeft width={18} />,
+        },
+        {
+          name: "Description",
+          href: `/listing/${router.query.id}`,
+          tab: `/app/listing/${router.query.id}`,
+          icon: <Captions width={18} />,
+        },
+        {
           name: "Guides",
           href: `${router.asPath}`,
           tab: `${router.pathname}`,
@@ -44,7 +78,7 @@ const Nav = ({ children, listing_id }) => {
       return [
         {
           name: "back to guides",
-          href: `/listing/${listing_id}`,
+          href: `/listing/${listing_id}/guides`,
           icon: <ChevronLeft width={18} />,
         },
         {

@@ -1,46 +1,51 @@
 import Layout from "@/components/app/Layout";
 import CreateGuideDialog from "@/components/app/create-guide-dialog";
 import ListingPageHeader from "@/components/app/listingPageHeader";
-import TipTap from "@/components/form/tiptap";
 import { Button } from "@/components/ui/button";
-
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
-import { Notebook } from "lucide-react";
+import { CirclePlus, Notebook } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
+// TODOS:
+// What happens where there are no guides - show a no guide page
+// DONE: Guides section with all the guides that the user will have been putting together
+// Adding guides drawer
+
 const ListingPage = ({ listingData, guidesData, listingId }) => {
-  const [editorContent, setEditorContent] = useState();
-  const handleContentChange = (reason) => {
-    setEditorContent(reason);
-  };
+  const [open, setOpen] = useState(false);
   return (
     <Layout>
+      <CreateGuideDialog open={open} setOpen={setOpen} listingId={listingId} />
       <div className="p-5">
         <ListingPageHeader
           listingData={listingData}
           icon={<Notebook width={32} />}
-          title="A summary description about your listing"
+          title="Guides"
         />
-        <div className="mt-5">
-          <form className="">
-            <TipTap
-              name="tiptap"
-              description={editorContent}
-              placeholder="Description about your listing..."
-              onChange={(newContent) => handleContentChange(newContent)}
-            />
-            <div className="flex flex-col items-center justify-center space-y-2 rounded-b border border-stone-200 bg-stone-100 p-2 dark:border-stone-700 dark:bg-stone-800 sm:flex-row sm:justify-between sm:space-y-0 sm:px-8">
-              <p className="text-sm text-stone-500 dark:text-stone-400">
-                Update your guide description
-              </p>
-              <Button type="submit" className="w-32 ">
-                Update
-              </Button>
-            </div>
-          </form>
+        <div className="grid gap-5 mt-5">
+          {guidesData.map((guide) => (
+            <Card
+              key={guide.id}
+              className="border border-stone-200  shadow-md transition-all hover:shadow-xl dark:border-stone-700 dark:hover:border-white"
+            >
+              <Link href={`/guide/${guide.id}`}>
+                <CardHeader>
+                  <CardTitle>{guide.title}</CardTitle>
+                </CardHeader>
+              </Link>
+            </Card>
+          ))}
         </div>
       </div>
+      <Button
+        className="fixed bottom-4 right-4 flex gap-2 "
+        onClick={() => setOpen(!open)}
+      >
+        <CirclePlus />
+        add a guide
+      </Button>
     </Layout>
   );
 };
