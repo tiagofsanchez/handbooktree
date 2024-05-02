@@ -1,22 +1,23 @@
 import Layout from "@/components/app/Layout";
+import CreateGuideDialog from "@/components/app/create-guide-dialog";
 import ListingPageHeader from "@/components/app/listingPageHeader";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
-import { Notebook } from "lucide-react";
+import { CirclePlus, Notebook } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 // TODOS:
 // What happens where there are no guides - show a no guide page
-// Guides section with all the guides that the user will have been putting together
+// DONE: Guides section with all the guides that the user will have been putting together
+// Adding guides drawer
 
-const ListingPage = ({ listingData, guidesData }) => {
+const ListingPage = ({ listingData, guidesData, listingId }) => {
+  const [open, setOpen] = useState(false);
   return (
     <Layout>
+      <CreateGuideDialog open={open} setOpen={setOpen} listingId={listingId} />
       <div className="p-5">
         <ListingPageHeader
           listingData={listingData}
@@ -32,13 +33,19 @@ const ListingPage = ({ listingData, guidesData }) => {
               <Link href={`/guide/${guide.id}`}>
                 <CardHeader>
                   <CardTitle>{guide.title}</CardTitle>
-                  <CardDescription>{guide.description}</CardDescription>
                 </CardHeader>
               </Link>
             </Card>
           ))}
         </div>
       </div>
+      <Button
+        className="fixed bottom-4 right-4 flex gap-2 "
+        onClick={() => setOpen(!open)}
+      >
+        <CirclePlus />
+        add a guide
+      </Button>
     </Layout>
   );
 };
@@ -61,6 +68,7 @@ export const getServerSideProps = async (ctx) => {
     props: {
       listingData: data[0],
       guidesData: guides,
+      listingId: id,
     },
   };
 };

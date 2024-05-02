@@ -117,9 +117,7 @@ export function CreateListingDialog({ userId, open, setOpen, refreshData }) {
               </div>
             </div>
             <div className="grid rounded-b-lg border-t border-stone-200 bg-stone-50  py-3 dark:border-stone-700 dark:bg-stone-800 px-8">
-              <Button variant="outline" type="submit">
-                Save changes
-              </Button>
+              <Button type="submit">Save changes</Button>
             </div>
           </form>
         </DialogContent>

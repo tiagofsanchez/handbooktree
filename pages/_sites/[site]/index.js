@@ -3,6 +3,8 @@ import supabase from "@/lib/supabase";
 // TO DOs
 // Connect to supabase listings
 // Structure and layout of the listings
+// 
+
 
 const SitePage = ({ site }) => {
   return <h1>SitePage - {site} </h1>;
