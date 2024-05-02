@@ -1,6 +1,7 @@
 import Layout from "@/components/app/Layout";
 import CreateGuideDialog from "@/components/app/create-guide-dialog";
 import ListingPageHeader from "@/components/app/listingPageHeader";
+import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { CirclePlus, Notebook } from "lucide-react";
@@ -38,14 +39,13 @@ const ListingPage = ({ listingData, guidesData, listingId }) => {
           ))}
         </div>
       </div>
-      <button
-        variant="ghost"
-        className="fixed bottom-4 right-4 bg-wite rounded  p-2 isolate shadow backdrop-blur-3xl ring-1 ring-stone-200/30 flex gap-2"
+      <Button
+        className="fixed bottom-4 right-4 flex gap-2 "
         onClick={() => setOpen(!open)}
       >
         <CirclePlus />
         add a guide
-      </button>
+      </Button>
     </Layout>
   );
 };
