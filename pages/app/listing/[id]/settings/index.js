@@ -39,9 +39,10 @@ const SettingsPage = ({ listingData, id }) => {
       .required("Required")
       .matches(
         new RegExp(`^${listingData.name}$`, "i"),
-        `You need to type '${listingData.name} to delete the listing'`
+        `You need to type "${listingData.name}" to delete the listing'`
       ),
   });
+
   async function updateListingName({ name }) {
     try {
       const updates = {
@@ -60,6 +61,7 @@ const SettingsPage = ({ listingData, id }) => {
       toast.error(error.message);
     }
   }
+
   async function updateListingSubdomain({ subdomain }) {
     try {
       const updates = {
@@ -127,7 +129,7 @@ const SettingsPage = ({ listingData, id }) => {
             inputValue=""
             title="Delete this listing"
             description="Delete this listing"
-            placeholder={`Type ${listingData.name} to delete`}
+            placeholder={`Type "${listingData.name}" to delete`}
             helpMessage="Deleting this listing will remove it completely."
             buttonAction="Delete"
             validationSchema={deleteSchema}

@@ -77,6 +77,7 @@ const GuidePage = ({ guideData }) => {
         <GuidePageHeader
           title={guideData.title}
           icon={<Notebook width={32} />}
+          description="Updated your guide bellow"
         />
         <div className="mt-5 space-y-5">
           <InputForm
@@ -119,7 +120,7 @@ export const getServerSideProps = async (ctx) => {
   const { id } = ctx.params;
   const supabase = createPagesServerClient(ctx);
 
-  const { data } = await supabase
+const { data } = await supabase
     .from("guides")
     .select("id, title , description, listing_id ")
     .eq("id", id);

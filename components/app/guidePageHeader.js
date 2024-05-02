@@ -4,7 +4,7 @@ import { Separator } from "../ui/separator";
 // TODO: 
 // Need to 
 
-const GuidePageHeader = ({ listingData, icon, title }) => {
+const GuidePageHeader = ({ listingData, icon, title, description }) => {
   // const currentHost =
   //   process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
   //     ? `https://${listingData.subdomain}.brokertree.co`
@@ -25,7 +25,7 @@ const GuidePageHeader = ({ listingData, icon, title }) => {
           {icon}
           {title}
         </h1>
-        <p>You can edit your guide below</p>
+        <p>{description}</p>
       </div>
       <Separator className="mt-4" />{" "}
     </>
