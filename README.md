@@ -1,6 +1,6 @@
 # Handbooktree
 
-The new platform for hosts (airbnb or any other platform really) to share guides and valuable things to do once they book their stay.
+The new platform for hosts (airbnb or any other platform really) to share guides and valuable things to do once guests book their stay.
 
 ## Getting Started
 
