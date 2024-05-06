@@ -18,8 +18,6 @@ export async function getStaticProps({ params: { site } }) {
     .select("*")
     .eq("subdomain", site);
 
-  console.log(site);
-
   return {
     props: {
       site,

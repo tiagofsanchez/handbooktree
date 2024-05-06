@@ -11,8 +11,6 @@ import { Notebook } from "lucide-react";
 import InputForm from "@/components/form/inputForm";
 import { useRouter } from "next/router";
 
-// TODO
-
 const GuidePage = ({ guideData }) => {
   const supabase = useSupabaseClient();
   const [editorContent, setEditorContent] = useState(guideData.description);
@@ -29,7 +27,7 @@ const GuidePage = ({ guideData }) => {
 
   const sanitizedHTML = DOMPurify?.sanitize(editorContent);
 
-  async function updateGuideTitle({title }) {
+  async function updateGuideTitle({ title }) {
     try {
       const updates = {
         id: guideData.id,
@@ -96,7 +94,7 @@ const GuidePage = ({ guideData }) => {
               placeholder="Your guide..."
               onChange={(newContent) => handleContentChange(newContent)}
             />
-            <div className="flex flex-col items-center justify-center space-y-2 rounded-b border border-stone-200 bg-stone-100 p-2 dark:border-stone-700 dark:bg-stone-800 sm:flex-row sm:justify-between sm:space-y-0 sm:px-8">
+            <div className="flex flex-col items-center justify-center space-y-2 rounded-b border border-t-0 border-stone-200 bg-stone-100 p-2 dark:border-stone-700 dark:bg-stone-800 sm:flex-row sm:justify-between sm:space-y-0 sm:px-8">
               <p className="text-sm text-stone-500 dark:text-stone-400">
                 Update your guide description
               </p>
@@ -120,7 +118,7 @@ export const getServerSideProps = async (ctx) => {
   const { id } = ctx.params;
   const supabase = createPagesServerClient(ctx);
 
-const { data } = await supabase
+  const { data } = await supabase
     .from("guides")
     .select("id, title , description, listing_id ")
     .eq("id", id);
