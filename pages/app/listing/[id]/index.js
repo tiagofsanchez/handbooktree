@@ -8,9 +8,10 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Notebook } from "lucide-react";
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
+import ImageForm from "@/components/form/imageForm";
 
 // TODO:
-// Description: add the description to the listing
+// DONE - Description: add the description to the listing
 // Photo: add photo to the listing (this will be the main photo of the listing)
 
 const ListingPage = ({ listingData }) => {
@@ -53,7 +54,8 @@ const ListingPage = ({ listingData }) => {
           icon={<Notebook width={32} />}
           title="A summary description about your listing"
         />
-        <div className="mt-5">
+        <div className="mt-5 space-y-4">
+          <ImageForm url={listingData.listing_url}/>
           <form className="" onSubmit={handleSubmit}>
             <TipTap
               name="tiptap"
@@ -83,7 +85,7 @@ export const getServerSideProps = async (ctx) => {
 
   const { data } = await supabase
     .from("listings")
-    .select("id, name, subdomain, description")
+    .select("id, name, subdomain, description, listing_url")
     .eq("id", id);
 
   return {
