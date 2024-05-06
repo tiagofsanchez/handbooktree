@@ -55,7 +55,7 @@ const ListingPage = ({ listingData }) => {
           title="A summary description about your listing"
         />
         <div className="mt-5 space-y-4">
-          <ImageForm url={listingData.listing_url}/>
+          <ImageForm url={listingData.listing_url} uid={listingData.id}/>
           <form className="" onSubmit={handleSubmit}>
             <TipTap
               name="tiptap"
