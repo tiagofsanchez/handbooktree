@@ -7,14 +7,14 @@ import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Notebook } from "lucide-react";
 import { useState } from "react";
-import { toast , Toaster} from "sonner";
+import { toast, Toaster } from "sonner";
 
 // TODO:
 // Description: add the description to the listing
 // Photo: add photo to the listing (this will be the main photo of the listing)
 
 const ListingPage = ({ listingData }) => {
-  const supabase = useSupabaseClient()
+  const supabase = useSupabaseClient();
   const [editorContent, setEditorContent] = useState(listingData.description);
   const handleContentChange = (reason) => {
     setEditorContent(reason);
@@ -45,8 +45,6 @@ const ListingPage = ({ listingData }) => {
     updateListDescription({ id: listingData.id, description: sanitizedHTML });
   }
 
-
-
   return (
     <Layout>
       <div className="p-5">
@@ -63,9 +61,9 @@ const ListingPage = ({ listingData }) => {
               placeholder="Description about your listing..."
               onChange={(newContent) => handleContentChange(newContent)}
             />
-            <div className="flex flex-col items-center justify-center space-y-2 rounded-b border border-stone-200 bg-stone-100 p-2 dark:border-stone-700 dark:bg-stone-800 sm:flex-row sm:justify-between sm:space-y-0 sm:px-8">
+            <div className="flex flex-col items-center justify-center space-y-2 rounded-b border border-t-0 border-stone-200 bg-stone-100 p-2 dark:border-stone-700 dark:bg-stone-800 sm:flex-row sm:justify-between sm:space-y-0 sm:px-8">
               <p className="text-sm text-stone-500 dark:text-stone-400">
-                Update your guide description
+                Update your description
               </p>
               <Button type="submit" className="w-32 ">
                 Update

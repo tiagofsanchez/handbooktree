@@ -94,7 +94,7 @@ const GuidePage = ({ guideData }) => {
               placeholder="Your guide..."
               onChange={(newContent) => handleContentChange(newContent)}
             />
-            <div className="flex flex-col items-center justify-center space-y-2 rounded-b border border-stone-200 bg-stone-100 p-2 dark:border-stone-700 dark:bg-stone-800 sm:flex-row sm:justify-between sm:space-y-0 sm:px-8">
+            <div className="flex flex-col items-center justify-center space-y-2 rounded-b border border-t-0 border-stone-200 bg-stone-100 p-2 dark:border-stone-700 dark:bg-stone-800 sm:flex-row sm:justify-between sm:space-y-0 sm:px-8">
               <p className="text-sm text-stone-500 dark:text-stone-400">
                 Update your guide description
               </p>
