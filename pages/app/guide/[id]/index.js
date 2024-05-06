@@ -11,8 +11,6 @@ import { Notebook } from "lucide-react";
 import InputForm from "@/components/form/inputForm";
 import { useRouter } from "next/router";
 
-// TODO
-
 const GuidePage = ({ guideData }) => {
   const supabase = useSupabaseClient();
   const [editorContent, setEditorContent] = useState(guideData.description);
@@ -29,7 +27,7 @@ const GuidePage = ({ guideData }) => {
 
   const sanitizedHTML = DOMPurify?.sanitize(editorContent);
 
-  async function updateGuideTitle({title }) {
+  async function updateGuideTitle({ title }) {
     try {
       const updates = {
         id: guideData.id,
@@ -120,7 +118,7 @@ export const getServerSideProps = async (ctx) => {
   const { id } = ctx.params;
   const supabase = createPagesServerClient(ctx);
 
-const { data } = await supabase
+  const { data } = await supabase
     .from("guides")
     .select("id, title , description, listing_id ")
     .eq("id", id);

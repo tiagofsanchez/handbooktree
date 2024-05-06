@@ -1,19 +1,52 @@
 import Layout from "@/components/app/Layout";
-import CreateGuideDialog from "@/components/app/create-guide-dialog";
 import ListingPageHeader from "@/components/app/listingPageHeader";
 import TipTap from "@/components/form/tiptap";
 import { Button } from "@/components/ui/button";
-
+import DOMPurify from "isomorphic-dompurify";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Notebook } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
+import { toast , Toaster} from "sonner";
 
-const ListingPage = ({ listingData, guidesData, listingId }) => {
-  const [editorContent, setEditorContent] = useState();
+// TODO:
+// Description: add the description to the listing
+// Photo: add photo to the listing (this will be the main photo of the listing)
+
+const ListingPage = ({ listingData }) => {
+  const supabase = useSupabaseClient()
+  const [editorContent, setEditorContent] = useState(listingData.description);
   const handleContentChange = (reason) => {
     setEditorContent(reason);
   };
+
+  const sanitizedHTML = DOMPurify?.sanitize(editorContent);
+
+  async function updateListDescription({ id, description }) {
+    try {
+      const updates = {
+        id: id,
+        description,
+        updated_at: new Date().toISOString(),
+      };
+      let { error } = await supabase
+        .from("listings")
+        .update(updates)
+        .eq("id", id);
+      if (error) throw error;
+      toast.success("You have updated your listing description");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    updateListDescription({ id: listingData.id, description: sanitizedHTML });
+  }
+
+
+
   return (
     <Layout>
       <div className="p-5">
@@ -23,7 +56,7 @@ const ListingPage = ({ listingData, guidesData, listingId }) => {
           title="A summary description about your listing"
         />
         <div className="mt-5">
-          <form className="">
+          <form className="" onSubmit={handleSubmit}>
             <TipTap
               name="tiptap"
               description={editorContent}
@@ -41,6 +74,7 @@ const ListingPage = ({ listingData, guidesData, listingId }) => {
           </form>
         </div>
       </div>
+      <Toaster />
     </Layout>
   );
 };
@@ -51,19 +85,12 @@ export const getServerSideProps = async (ctx) => {
 
   const { data } = await supabase
     .from("listings")
-    .select("name, subdomain")
+    .select("id, name, subdomain, description")
     .eq("id", id);
-
-  const { data: guides } = await supabase
-    .from("guides")
-    .select("id, title , description ")
-    .eq("listing_id", id);
 
   return {
     props: {
       listingData: data[0],
-      guidesData: guides,
-      listingId: id,
     },
   };
 };
