@@ -5,7 +5,7 @@ import { toast, Toaster } from "sonner";
 import Image from "next/image";
 import { Skeleton } from "../ui/skeleton";
 
-const ImageForm = ({ url, uid }) => {
+const ImageForm = ({ url, uid, onUpload }) => {
   const supabase = useSupabaseClient();
 
   const [imageUrl, setImageUrl] = useState(null);
@@ -32,12 +32,20 @@ const ImageForm = ({ url, uid }) => {
   const uploadImage = async (event) => {
     try {
       setUploading(true);
-
       if (!event.target.files || event.target.files.length === 0) {
         throw new Error("You must select an image to upload.");
       }
       const file = event.target.files[0];
       const filePath = `${uid}-${Math.random()}.${file.name}`;
+
+      // If a URL is provided, remove the previous image
+      if (url) {
+        let newUrl = `public/listing_avatar/${url}`
+        await supabase.storage
+          .from("public/listing_avatar")
+          .remove([newUrl]);
+      }
+
       let { error: uploadError } = await supabase.storage
         .from("listing_avatar")
         .upload(filePath, file);
@@ -45,8 +53,7 @@ const ImageForm = ({ url, uid }) => {
       if (uploadError) {
         throw uploadError;
       }
-      //   onUpload(filePath);
-      // I will need to updated the URL on the listings table and this will come HOC
+      onUpload(filePath);
     } catch (uploadError) {
       toast.error("Error downloading image: ", uploadError);
     } finally {

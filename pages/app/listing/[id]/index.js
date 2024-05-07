@@ -17,6 +17,7 @@ import ImageForm from "@/components/form/imageForm";
 const ListingPage = ({ listingData }) => {
   const supabase = useSupabaseClient();
   const [editorContent, setEditorContent] = useState(listingData.description);
+  const [listingAvatar, setListingAvatar] = useState(listingData.listing_url);
   const handleContentChange = (reason) => {
     setEditorContent(reason);
   };
@@ -41,6 +42,23 @@ const ListingPage = ({ listingData }) => {
     }
   }
 
+  async function updateListingUrl({ listing_url }) {
+    try {
+      const updates = {
+        updated_at: new Date().toISOString(),
+        listing_url,
+      };
+      let { error } = await supabase
+        .from("listings")
+        .update(updates)
+        .eq("id", listingData.id);
+      if (error) throw error;
+    } catch (error) {
+      alert(JSON.stringify(error, null, 2));
+      console.log(error);
+    }
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     updateListDescription({ id: listingData.id, description: sanitizedHTML });
@@ -55,7 +73,14 @@ const ListingPage = ({ listingData }) => {
           title="A summary description about your listing"
         />
         <div className="mt-5 space-y-4">
-          <ImageForm url={listingData.listing_url} uid={listingData.id}/>
+          <ImageForm
+            url={listingAvatar}
+            uid={listingData.id}
+            onUpload={(path) => {
+              setListingAvatar(path);
+              updateListingUrl({ listing_url: path });
+            }}
+          />
           <form className="" onSubmit={handleSubmit}>
             <TipTap
               name="tiptap"
