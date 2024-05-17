@@ -30,6 +30,7 @@ const ImageForm = ({ url, uid, onUpload }) => {
   }, [url, supabase]);
 
   const uploadImage = async (event) => {
+    
     try {
       setUploading(true);
       if (!event.target.files || event.target.files.length === 0) {
@@ -40,15 +41,19 @@ const ImageForm = ({ url, uid, onUpload }) => {
 
       // If a URL is provided, remove the previous image
       if (url) {
-        let newUrl = `public/listing_avatar/${url}`
-        await supabase.storage
-          .from("public/listing_avatar")
-          .remove([newUrl]);
+        let newUrl = `public/listing_avatar/${url}`;
+        console.log({url, newUrl})
+        let{data, error: deleteError} = await supabase.storage.from("listing_avatar").remove([url]);
+        if(deleteError) {
+          throw deleteError
+        }
+        console.log({deleteError, data})
       }
 
       let { error: uploadError } = await supabase.storage
         .from("listing_avatar")
         .upload(filePath, file);
+  
 
       if (uploadError) {
         throw uploadError;
@@ -59,9 +64,8 @@ const ImageForm = ({ url, uid, onUpload }) => {
     } finally {
       setUploading(false);
     }
+    
   };
-
-  console.log({ imageUrl, uploading, url, uid });
 
   return (
     <>
