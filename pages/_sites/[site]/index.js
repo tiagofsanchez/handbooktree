@@ -1,13 +1,18 @@
+import Layout from "@/components/site/Layout";
 import supabase from "@/lib/supabase";
 
 // TO DOs
 // Connect to supabase listings
 // Structure and layout of the listings
-// 
+//
 
-
-const SitePage = ({ site }) => {
-  return <h1>SitePage - {site} </h1>;
+const SitePage = ({ listingData }) => {
+  return (
+    <Layout
+      name={listingData.name}
+      listing_url={listingData.listing_url}
+    ></Layout>
+  );
 };
 
 export default SitePage;
@@ -20,7 +25,7 @@ export async function getStaticProps({ params: { site } }) {
 
   return {
     props: {
-      site,
+      listingData: data[0],
     },
     revalidate: 3600,
   };
