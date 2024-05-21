@@ -6,7 +6,6 @@ import { Skeleton } from "../ui/skeleton";
 const ListingImage = ({ url }) => {
   const supabase = useSupabaseClient();
   const [imageUrl, setImageUrl] = useState(null);
-  console.log({ url, imageUrl });
   useEffect(() => {
     async function downloadImage(path) {
       try {

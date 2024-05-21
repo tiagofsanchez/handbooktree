@@ -2,9 +2,10 @@ import Head from "next/head";
 import ListingImage from "./ListingImage";
 import NavMenu from "./NavMenu";
 
-// TODO:
+// TODO
+// OMG feature
 
-const Layout = ({ name, listing_url }) => {
+const Layout = ({ name, listing_url, children }) => {
   return (
     <div>
       <Head>
@@ -17,20 +18,7 @@ const Layout = ({ name, listing_url }) => {
         </h1>
         <NavMenu />
       </header>
-      <main className="p-5 m-auto max-w-3xl">
-        <section id="house-guides">
-          <h1>House guides</h1>
-        </section>
-        <section id="local-guides">
-          <h1>Local guides</h1>
-        </section>
-        <section id="contact">
-          <h1>Contact</h1>
-        </section>
-        <footer>
-          <p>Footer</p>
-        </footer>
-      </main>
+      {children}
     </div>
   );
 };
