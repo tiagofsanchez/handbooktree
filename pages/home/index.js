@@ -1,3 +1,4 @@
+import HomePageHero from "@/components/home/HomePageHero";
 import Layout from "@/components/home/Layout";
 
 // TODO pseudo code
@@ -11,7 +12,7 @@ import Layout from "@/components/home/Layout";
 export default function Home() {
   return (
     <Layout>
-      <section id="hero">Hero</section>
+      <HomePageHero />
       <section id="house_guides">House Guides</section>
       <section id="local_guides">Local Guides</section>
       <section id="newsletter">Newsletter</section>

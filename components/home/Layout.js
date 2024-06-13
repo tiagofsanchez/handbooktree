@@ -54,7 +54,7 @@ const Layout = ({ children }) => {
         />
         <meta name="twitter:image" content={metadata.twitter.image} />
       </Head>
-      <header className="mt-5 flex px-24 ">
+      <header className="mt-5 flex justify-between container mx-auto max-w-screen-xl px-4">
         {/* Navigation Component */}
         <nav className="text-center flex">
           {/* Your navigation links */}
@@ -75,12 +75,15 @@ const Layout = ({ children }) => {
       </header>
 
       <main
-        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+        className={`container mx-auto max-w-screen-xl px-4 mt-10 ${inter.className}`}
       >
         {children}
       </main>
-      <footer>
-        <p>Made with ❤️ by the HandbookTree team</p>
+      <footer className="text-center p-4 ">
+        <p>
+          Made with ❤️ by the{" "}
+          <span className="font-extrabold">HandbookTree</span> team
+        </p>
       </footer>
     </>
   );
