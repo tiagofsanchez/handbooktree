@@ -14,7 +14,7 @@ export default function Home() {
       <section id="hero">Hero</section>
       <section id="house_guides">House Guides</section>
       <section id="local_guides">Local Guides</section>
-      <section id="form">Form</section>
+      <section id="newsletter">Newsletter</section>
     </Layout>
   );
 }

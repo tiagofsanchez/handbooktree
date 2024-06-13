@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
+import { Button } from "../ui/button";
 const inter = Inter({ subsets: ["latin"] });
 
 const metadata = {
@@ -15,7 +16,7 @@ const metadata = {
     url: "https://www.yourwebsite.com/",
     image: "https://www.yourwebsite.com/og-image.jpg",
     type: "website",
-    site_name: "Your Website Name",
+    site_name: "HandbookTree",
   },
   twitter: {
     card: "summary_large_image",
@@ -53,26 +54,24 @@ const Layout = ({ children }) => {
         />
         <meta name="twitter:image" content={metadata.twitter.image} />
       </Head>
-      <header>
+      <header className="mt-5 flex px-24 ">
         {/* Navigation Component */}
-        <nav>
+        <nav className="text-center flex">
           {/* Your navigation links */}
-          <ul>
-            <li>
-              <a href="/">Home</a>
+          <ul className="flex gap-2 m-auto">
+            <li className="rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
+              <a href="#house_guides">House Guides</a>
             </li>
-            <li>
-              <a href="/about">House Guides</a>
+            <li className="rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
+              <a href="#local_guides">Local Guides</a>
             </li>
-            <li>
-              <a href="/guides">Local Guides</a>
-            </li>
-            <li>
-              <a href="/form">Newsletter</a>
+            <li className="rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
+              <a href="#newsletter">Newsletter</a>
             </li>
             {/* Add more links as needed */}
           </ul>
         </nav>
+        <Button>Sign in</Button>
       </header>
 
       <main
