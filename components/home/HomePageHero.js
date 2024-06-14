@@ -4,10 +4,10 @@ import handbooktree from "../../public/images/handbooktree.svg";
 
 const HomePageHero = () => {
   return (
-    <section className="bg-custom-radial lg:py-30 py-20 rounded-xl">
-      <div className="container mx-auto flex gap-8 flex-col lg:flex-row items-center justify-between px-5">
+    <section className="bg-custom-radial lg:py-40 py-20 rounded-xl">
+      <div className="container mx-auto flex lg:gap-8 flex-col lg:flex-row items-center justify-between px-5">
         {/* Left column (2/3 width on large screens) */}
-        <div className="lg:w-2/3 mb-10 lg:mb-0">
+        <div className="lg:w-2/3 ">
           <h1 className="text-6xl font-bold leading-tight mb-6">
             Welcome to{" "}
             <span className="text-pink-600 font-extrabold">HandbookTree</span>
@@ -22,7 +22,7 @@ const HomePageHero = () => {
         </div>
         {/* Right column (1/3 width on large screens) */}
         <div className="lg:w-1/3">
-          <Image width={500} height={500} src={handbooktree} alt="Hero Image" />
+          <Image width={300} height={300} src={handbooktree} alt="Hero Image" />
         </div>
       </div>
     </section>

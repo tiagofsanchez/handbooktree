@@ -1,4 +1,6 @@
+import HomePageGuides from "@/components/home/HomePageGuides";
 import HomePageHero from "@/components/home/HomePageHero";
+import HomePageLocals from "@/components/home/HomePageLocals";
 import Layout from "@/components/home/Layout";
 
 // TODO pseudo code
@@ -13,8 +15,8 @@ export default function Home() {
   return (
     <Layout>
       <HomePageHero />
-      <section id="house_guides">House Guides</section>
-      <section id="local_guides">Local Guides</section>
+      <HomePageGuides />
+      <HomePageLocals />
       <section id="newsletter">Newsletter</section>
     </Layout>
   );

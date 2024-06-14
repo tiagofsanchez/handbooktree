@@ -75,7 +75,7 @@ const Layout = ({ children }) => {
       </header>
 
       <main
-        className={`container mx-auto max-w-screen-xl px-4 mt-10 ${inter.className}`}
+        className={`container mx-auto max-w-screen-xl px-4 mt-10 ${inter.className} space-y-20`}
       >
         {children}
       </main>
