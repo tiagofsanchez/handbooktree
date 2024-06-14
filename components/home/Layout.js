@@ -75,11 +75,11 @@ const Layout = ({ children }) => {
       </header>
 
       <main
-        className={`container mx-auto max-w-screen-xl px-4 mt-10 ${inter.className} space-y-20`}
+        className={`container mx-auto max-w-screen-xl px-4 mt-10 ${inter.className} space-y-32`}
       >
         {children}
       </main>
-      <footer className="text-center p-4 ">
+      <footer className="text-center p-4 mt-10 ">
         <p>
           Made with ❤️ by the{" "}
           <span className="font-extrabold text-pink-600 ">HandbookTree</span>{" "}

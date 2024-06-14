@@ -20,6 +20,8 @@ module.exports = {
       backgroundImage: {
         "custom-radial":
           "radial-gradient(circle, rgba(255,105,180,0.5), rgba(255,255,255,0.3))",
+        "custom-radial-black":
+          "radial-gradient(circle, rgba(0,0,0,0.8), rgba(0,0,0,0.5))",
       },
       colors: {
         border: "hsl(var(--border))",
