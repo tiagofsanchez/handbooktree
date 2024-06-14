@@ -82,7 +82,8 @@ const Layout = ({ children }) => {
       <footer className="text-center p-4 ">
         <p>
           Made with ❤️ by the{" "}
-          <span className="font-extrabold">HandbookTree</span> team
+          <span className="font-extrabold text-pink-600 ">HandbookTree</span>{" "}
+          team
         </p>
       </footer>
     </>
