@@ -59,13 +59,13 @@ const Layout = ({ children }) => {
         <nav className="text-center flex">
           {/* Your navigation links */}
           <ul className="flex gap-2 m-auto">
-            <li className="rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
+            <li className="font-extrabold rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
               <a href="#house_guides">House Guides</a>
             </li>
-            <li className="rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
+            <li className="font-extrabold rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
               <a href="#local_guides">Local Guides</a>
             </li>
-            <li className="rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
+            <li className="font-extrabold rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
               <a href="#newsletter">Newsletter</a>
             </li>
             {/* Add more links as needed */}
