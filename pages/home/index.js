@@ -7,10 +7,12 @@ import NewsletterForm from "@/components/home/Newsletter";
 // TODO pseudo code
 // Head and OG
 // HERO
-// House Guides
-// Local Guides
+// DONE: House Guides
+// DONE: Local Guides
 // Form
-// Footer
+// Connecting to Airtable? 
+// Telling the user that they just subscribe
+// DONE: Footer
 
 export default function Home() {
   return (

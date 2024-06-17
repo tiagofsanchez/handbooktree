@@ -14,7 +14,7 @@ const metadata = {
     description:
       "The only place your guests get a smooth, stress-free experience. Build your app today!",
     url: "https://www.yourwebsite.com/",
-    image: "https://www.yourwebsite.com/og-image.jpg",
+    // image: "https://www.yourwebsite.com/og-image.jpg",
     type: "website",
     site_name: "HandbookTree",
   },
@@ -23,7 +23,7 @@ const metadata = {
     title: "HandbookTree",
     description:
       "The only place your guests get a smooth, stress-free experience. Build your app today!",
-    image: "https://www.yourwebsite.com/twitter-image.jpg",
+    // image: "https://www.yourwebsite.com/twitter-image.jpg",
   },
 };
 
