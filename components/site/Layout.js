@@ -31,7 +31,7 @@ const Layout = ({ name, listing_url, children }) => {
   };
 
   return (
-    <div>
+    <>
       <Head>
         {/* SEO */}
         <title>{metadata.title}</title>
@@ -56,15 +56,23 @@ const Layout = ({ name, listing_url, children }) => {
         />
         <meta name="twitter:image" content={metadata.twitter.image} />
       </Head>
-      <header className="max-w-3xl m-auto p-3 space-y-3 bg-stone-50  rounded-xl mt-3   ">
+      <header className="max-w-3xl m-auto p-3 space-y-3 bg-stone-100  rounded-xl mt-3   ">
         <ListingImage url={listing_url} />
         <h1 className="text-2xl capitalize text-center font-extrabold">
           {name}
         </h1>
         <NavMenu />
       </header>
-      {children}
-    </div>
+      <main className="p-5 m-auto max-w-3xl">{children}</main>
+
+      <footer className="text-center p-4 mt-10 ">
+        <p>
+          Made with ❤️ by the{" "}
+          <span className="font-extrabold text-pink-600 ">HandbookTree</span>{" "}
+          team
+        </p>
+      </footer>
+    </>
   );
 };
 

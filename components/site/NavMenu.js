@@ -12,10 +12,10 @@ const NavMenu = () => {
           <Map width={18} />
           <a href="#local-guides">Local guides</a>
         </li>
-        <li className="rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
+        {/* <li className="rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800 flex gap-1">
           <Phone width={18} />
           <a href="#contact">Contact</a>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

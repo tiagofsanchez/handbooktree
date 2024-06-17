@@ -23,7 +23,10 @@ const NewsletterForm = () => {
   };
 
   return (
-    <section className="py-10 px-5 bg-custom-radial border-8 border-pink-700 rounded-2xl">
+    <section
+      id="newsletter"
+      className="py-10 px-5 bg-custom-radial border-8 border-pink-700 rounded-2xl"
+    >
       <div className="container mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-2 items-center">
         {/* Form Section */}
         <div className="bg-white bg-opacity-70 p-8 rounded-lg shadow-lg">

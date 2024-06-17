@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const HomePageLocals = () => {
   return (
-    <section id="locals_guides" className="py-10 px-5 bg-custom-radial ">
+    <section id="local  _guides" className="py-10 px-5 bg-custom-radial ">
       <div className="text-center mb-6">
         <p className="inline-block px-4 py-2 bg-pink-600 text-white rounded-full mb-4">
           <span className="font-extrabold">Local Guides:</span> Your Guests'
