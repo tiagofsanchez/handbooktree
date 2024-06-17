@@ -6,7 +6,6 @@ import NavMenu from "./NavMenu";
 // OG feature
 
 const Layout = ({ name, listing_url, children }) => {
-
   const metadata = {
     title: `HandbookTree - ${name}`,
     description:
@@ -24,13 +23,12 @@ const Layout = ({ name, listing_url, children }) => {
     },
     twitter: {
       card: "summary_large_image",
-      title: "HandbookTree",
+      title: `HandbookTree - ${name}`,
       description:
-        "The only place your guests get a smooth, stress-free experience. Build your app today!",
+        "The only place your guests get a smooth, stress-free experience.",
       // image: "https://www.yourwebsite.com/twitter-image.jpg",
     },
   };
-
 
   return (
     <div>
@@ -40,7 +38,7 @@ const Layout = ({ name, listing_url, children }) => {
         <meta name="description" content={metadata.description} />
         <meta charSet={metadata.charset} />
         <meta name="viewport" content={metadata.viewport} />
-        
+
         {/* Open Graph (OG) Tags */}
         <meta property="og:title" content={metadata.og.title} />
         <meta property="og:description" content={metadata.og.description} />
