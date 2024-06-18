@@ -1,7 +1,7 @@
 import Layout from "@/components/site/Layout";
 import DOMPurify from "isomorphic-dompurify";
 import supabase from "@/lib/supabase";
-import { Notebook, Phone, Map } from "lucide-react";
+import { Notebook, Map } from "lucide-react";
 import GuidesList from "@/components/site/GuidesList";
 import { Button } from "@/components/ui/button";
 

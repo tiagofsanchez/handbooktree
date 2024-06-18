@@ -27,17 +27,17 @@ const GuidesList = ({ guidesArray }) => {
           {guidesArray.map((guide) => {
             const sanitizedHTML = DOMPurify?.sanitize(guide.description);
 
-            // Create a temporary div element to parse the sanitized HTML
-            const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = sanitizedHTML;
+            // // Create a temporary div element to parse the sanitized HTML
+            // const tempDiv = document.createElement("div");
+            // tempDiv.innerHTML = sanitizedHTML;
 
-            // Extract the first two paragraphs
-            const paragraphs = tempDiv.querySelectorAll("p");
-            let firstTwoParagraphs = "";
-            if (paragraphs.length > 0)
-              firstTwoParagraphs += paragraphs[0].outerHTML;
-            if (paragraphs.length > 1)
-              firstTwoParagraphs += paragraphs[1].outerHTML;
+            // // Extract the first two paragraphs
+            // const paragraphs = tempDiv.querySelectorAll("p");
+            // let firstTwoParagraphs = "";
+            // if (paragraphs.length > 0)
+            //   firstTwoParagraphs += paragraphs[0].outerHTML;
+            // if (paragraphs.length > 1)
+            //   firstTwoParagraphs += paragraphs[1].outerHTML;
 
             return (
               <CarouselItem
@@ -52,7 +52,7 @@ const GuidesList = ({ guidesArray }) => {
                     <CardContent className="p-6 pt-0">
                       <div
                         className="card"
-                        dangerouslySetInnerHTML={{ __html: firstTwoParagraphs }}
+                        dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
                       />
                     </CardContent>
                     <CardFooter>
