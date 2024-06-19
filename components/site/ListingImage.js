@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Skeleton } from "../ui/skeleton";
 
-const ListingImage = ({ url }) => {
+const ListingImage = ({ url, width, height }) => {
   const supabase = useSupabaseClient();
   const [imageUrl, setImageUrl] = useState(null);
   useEffect(() => {
@@ -28,11 +28,10 @@ const ListingImage = ({ url }) => {
     <>
       {imageUrl ? (
         <Image
-          width={150}
-          height={125}
+          width={width}
+          height={height}
           src={imageUrl}
           alt="listing image"
-          className="m-auto"
         />
       ) : (
         <Skeleton className="h-[125px] w-[250px] rounded m-auto mt-3" />

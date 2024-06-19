@@ -56,12 +56,12 @@ const Layout = ({ name, listing_url, children }) => {
         />
         <meta name="twitter:image" content={metadata.twitter.image} />
       </Head>
-      <header className="max-w-3xl m-auto p-3 space-y-3 bg-stone-100  rounded-xl mt-3   ">
-        <ListingImage url={listing_url} />
+      <header className="max-w-3xl m-auto px-3 py-8 space-y-3 bg-stone-100 grid justify-center rounded-xl mt-3  ">
+        <ListingImage url={listing_url} width={150} height={150} />
         <h1 className="text-2xl capitalize text-center font-extrabold">
           {name}
         </h1>
-        <NavMenu />
+        {/* <NavMenu /> */}
       </header>
       <main className="p-5 m-auto max-w-3xl">{children}</main>
 
