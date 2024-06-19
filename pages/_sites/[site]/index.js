@@ -4,6 +4,7 @@ import supabase from "@/lib/supabase";
 import { Notebook, Map } from "lucide-react";
 import GuidesList from "@/components/site/GuidesList";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 // TO DOs
 // Structure and layout of the listings
@@ -11,7 +12,6 @@ import { Button } from "@/components/ui/button";
 
 const SitePage = ({ listingData, guidesData }) => {
   const sanitizedHTML = DOMPurify?.sanitize(listingData.description);
-  console.log({ guidesData, listingData });
 
   return (
     <Layout name={listingData.name} listing_url={listingData.listing_url}>
@@ -27,7 +27,9 @@ const SitePage = ({ listingData, guidesData }) => {
           </div>
           {guidesData.length !== 0 && <GuidesList guidesArray={guidesData} />}
           <div className="text-center">
-            <Button variant="secondary">All House Guides</Button>
+            <Link href="/house-guides">
+              <Button variant="secondary">All House Guides</Button>
+            </Link>
           </div>
         </section>
         <section id="local-guides" className="space-y-4 ">
@@ -37,7 +39,9 @@ const SitePage = ({ listingData, guidesData }) => {
           </div>
           {/* <GuidesList /> */}
           <div className="text-center">
-            <Button variant="secondary">All Local Tips</Button>
+            <Link href="/local-guides">
+              <Button variant="secondary">All Local Tips</Button>
+            </Link>
           </div>
         </section>
         {/* <section id="contact" className="space-y-4 ">
