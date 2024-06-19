@@ -1,7 +1,7 @@
 import LayoutAll from "@/components/site/LayoutAll";
 import supabase from "@/lib/supabase";
 
-const LocalGuidesPage = ({ listingData, guidesData }) => {
+const LocalTipsPage = ({ listingData, guidesData }) => {
   return (
     <LayoutAll {...listingData}>
       <h1>Local guides Page</h1>
@@ -9,7 +9,7 @@ const LocalGuidesPage = ({ listingData, guidesData }) => {
   );
 };
 
-export default LocalGuidesPage;
+export default LocalTipsPage;
 
 export async function getStaticProps({ params: { site } }) {
   const { data } = await supabase
