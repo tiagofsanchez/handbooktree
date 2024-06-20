@@ -1,5 +1,6 @@
 import Head from "next/head";
 import ListingImage from "./ListingImage";
+import Link from "next/link";
 
 // TODO
 // OG feature
@@ -58,10 +59,12 @@ const LayoutAll = ({ name, listing_url, children }) => {
       <div className="relative min-h-screen">
         <header className="max-w-3xl m-auto p-3  bg-stone-100 rounded-xl mt-3 flex gap-5 items-center">
           <ListingImage url={listing_url} width={80} height={80} />
-          <h1 className="text-4xl capitalize font-extrabold ">{name}</h1>
+          <Link href="/">
+            <h1 className="text-4xl capitalize font-extrabold ">{name}</h1>
+          </Link>
         </header>
         <main className="p-5 m-auto max-w-3xl">{children}</main>
-        <footer className="max-w-3xl text-center p-4 mt-10 absolute bottom-2 left-1/2 transform -translate-x-1/2 ">
+        <footer className="max-w-3xl text-center p-4 mt-10 absolute bottom-2 left-1/2 transform -translate-x-1/2   ">
           <p>
             Made with ❤️ by the{" "}
             <span className="font-extrabold text-pink-600 ">HandbookTree</span>{" "}

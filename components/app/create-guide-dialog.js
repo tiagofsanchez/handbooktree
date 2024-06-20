@@ -11,6 +11,18 @@ import { useRouter } from "next/router";
 // UI needs to be similar to the UI of the other Dialog
 // Create the title and refresh on the page that was just created so that the user can do the proper write up for the guide.
 
+const type = [
+  {
+    value: "house guide",
+    label: "House Guide",
+  },
+  {
+    value: "local tips",
+    label: "Local Tips",
+  },
+];
+
+
 const CreateGuideDialog = ({ open, setOpen, listingId }) => {
 
   const supabase = useSupabaseClient();
