@@ -4,7 +4,7 @@ import handbooktree from "../../public/images/handbooktree.svg";
 
 const HomePageHero = () => {
   return (
-    <section className="bg-custom-radial lg:py-40 py-20 rounded-xl">
+    <section className="bg-custom-radial-black py-20 lg:py-40 px-5 border-4 border-black rounded-xl">
       <div className="container mx-auto flex lg:gap-8 flex-col lg:flex-row items-center justify-between px-5">
         {/* Left column (2/3 width on large screens) */}
         <div className="lg:w-2/3 ">
