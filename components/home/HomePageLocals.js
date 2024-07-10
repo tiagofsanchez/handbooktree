@@ -6,7 +6,7 @@ const HomePageLocals = () => {
   return (
     <section id="local_guides" className="py-10 px-5 ">
       <div className="text-center mb-6">
-        <p className="inline-block px-4 py-2 bg-custom-radial-black border-pink-600 border-4 rounded-full mb-8">
+        <p className="inline-block px-4 py-2 bg-custom-radial border-pink-600 border rounded-full mb-8">
           <span className="font-extrabold">Local Guides:</span> Your Guests'
           Adventure Awaits!
         </p>

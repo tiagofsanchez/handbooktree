@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import { Button } from "../ui/button";
+import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 const metadata = {
@@ -28,6 +29,10 @@ const metadata = {
 };
 
 const Layout = ({ children }) => {
+  const currentHost =
+    process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
+      ? `http://app.localhost:3000`
+      : `http://app.localhost:3000`;
   return (
     <>
       <Head>
@@ -71,7 +76,9 @@ const Layout = ({ children }) => {
             {/* Add more links as needed */}
           </ul>
         </nav>
-        <Button>Sign in</Button>
+        <Link href={currentHost}>
+          <Button>Sign in</Button>
+        </Link>
       </header>
 
       <main
