@@ -69,8 +69,8 @@ const Nav = ({ children, listing_id }) => {
         },
         {
           name: "Settings",
-          href: `${router.asPath}/settings`,
-          tab: `${router.pathname}/settings`,
+          href: `/listing/${router.query.id}/settings`,
+          tab: `/app/listing/${router.query.id}/settings`,
           icon: <Settings width={18} />,
         },
       ];
@@ -117,12 +117,20 @@ const Nav = ({ children, listing_id }) => {
       return [
         {
           name: "back to listings",
-          href: `/listing/${router.query.id}`,
+          href: "/listings",
+          tab: "/app/listings",
           icon: <ChevronLeft width={18} />,
         },
         {
-          name: "Guides",
+          name: "Description",
           href: `/listing/${router.query.id}`,
+          tab: `/app/listing/${router.query.id}`,
+          icon: <Captions width={18} />,
+        },
+        {
+          name: "Guides",
+          href: `/listing/${router.query.id}/guides`,
+          tab: `/app/listing/${router.query.id}/guides`,
           icon: <Notebook width={18} />,
         },
         {

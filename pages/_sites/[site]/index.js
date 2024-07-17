@@ -1,13 +1,64 @@
+import DOMPurify from "isomorphic-dompurify";
 import supabase from "@/lib/supabase";
+import { Map, Home } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import LayoutAll from "@/components/site/LayoutAll";
 
 // TO DOs
-// Connect to supabase listings
+// PHOTO: Comment it out right now to simplify everything and have something out of the door
 // Structure and layout of the listings
-// 
+// Prepare this for when there is no content
 
+const SitePage = ({ listingData }) => {
+  const sanitizedHTML = DOMPurify.sanitize(listingData.description);
+  return (
+    <LayoutAll name={listingData.name} listing_url={listingData.listing_url}>
+      <div className="space-y-10">
+        <div
+          className="mt-10 p-5 "
+          dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
+        />
+        <div className=" border p-2 rounded-2xl space-y-2 ">
+          <section
+            id="house-guides"
+            className="flex justify-between bg-stone-50  rounded-2xl p-5"
+          >
+            <div className="flex gap-1 items-center justify-center">
+              <Home width={32} />
+              <h1 className="text-xl font-bold">House guides</h1>
+            </div>
+            <div className="">
+              <Link href="/house-guides">
+                <Button>See all</Button>
+              </Link>
+            </div>
+          </section>
+          <section
+            id="local-guides"
+            className="flex justify-between bg-stone-50  rounded-2xl p-5"
+          >
+            <div className="flex gap-1 items-center justify-center">
+              <Map width={32} />
+              <h1 className="text-xl font-bold">Local tips</h1>
+            </div>
 
-const SitePage = ({ site }) => {
-  return <h1>SitePage - {site} </h1>;
+            <div className="text-center">
+              <Link href="/local-tips">
+                <Button>See all</Button>
+              </Link>
+            </div>
+          </section>
+        </div>
+        {/* <section id="contact" className="space-y-4 ">
+            <div className="flex gap-1 items-center justify-center">
+              <Phone width={32} />{" "}
+              <h1 className="text-xl font-bold">Contact</h1>
+            </div>
+          </section> */}
+      </div>
+    </LayoutAll>
+  );
 };
 
 export default SitePage;
@@ -20,7 +71,7 @@ export async function getStaticProps({ params: { site } }) {
 
   return {
     props: {
-      site,
+      listingData: data[0],
     },
     revalidate: 3600,
   };

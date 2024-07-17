@@ -10,7 +10,7 @@ import { useState } from "react";
 
 // TODOS:
 // What happens where there are no guides - show a no guide page
-// DONE: Guides section with all the guides that the user will have been putting together
+// DONE: Guides section with all the guides that the user have been putting together
 // Adding guides drawer
 
 const ListingPage = ({ listingData, guidesData, listingId }) => {
