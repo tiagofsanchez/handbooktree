@@ -6,7 +6,7 @@ const HomePageGuides = () => {
   return (
     <section id="house_guides" className="py-10 px-5 ">
       <div className="text-center mb-6">
-        <p className="inline-block px-4 py-2 bg-custom-radial border-pink-600 border rounded-full mb-8">
+        <p className="inline-block px-4 py-2 bg-slate-50 border-pink-600 border rounded-full mb-8">
           <span className="font-extrabold">House Guides:</span> Your Guests'
           Personal Home Navigators!
         </p>
@@ -24,7 +24,7 @@ const HomePageGuides = () => {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <div className="bg-white p-6 rounded-lg border">
+        <div className="bg-white p-10 rounded-2xl border">
           <h3 className="text-xl font-semibold mb-4">
             Effortlessly Share Essential Information
           </h3>
@@ -36,7 +36,7 @@ const HomePageGuides = () => {
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-lg border">
+        <div className="bg-white p-10 rounded-2xl border">
           <h3 className="text-xl font-semibold mb-4">
             Smooth Navigation and Facility Use
           </h3>
@@ -47,7 +47,7 @@ const HomePageGuides = () => {
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-lg border">
+        <div className="bg-white p-10 rounded-2xl border">
           <h3 className="text-xl font-semibold mb-4">
             Digital Concierge for a Stress-Free Experience
           </h3>

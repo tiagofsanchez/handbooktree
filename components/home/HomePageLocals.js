@@ -6,7 +6,7 @@ const HomePageLocals = () => {
   return (
     <section id="local_guides" className="py-10 px-5 ">
       <div className="text-center mb-6">
-        <p className="inline-block px-4 py-2 bg-custom-radial border-pink-600 border rounded-full mb-8">
+        <p className="inline-block px-4 py-2 bg-slate-50 border-pink-600 border rounded-full mb-8">
           <span className="font-extrabold">Local Guides:</span> Your Guests'
           Adventure Awaits!
         </p>
@@ -24,7 +24,7 @@ const HomePageLocals = () => {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <div className="bg-white p-6 rounded-lg border bg-opacity-70">
+        <div className="bg-white p-10 rounded-2xl border bg-opacity-70">
           <h3 className="text-xl font-semibold mb-4">
             Unlock the Best Local Experiences
           </h3>
@@ -36,7 +36,7 @@ const HomePageLocals = () => {
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-lg border bg-opacity-70">
+        <div className="bg-white p-10 rounded-2xl border bg-opacity-70">
           <h3 className="text-xl font-semibold mb-4">
             Personalized Recommendations at Their Fingertips
           </h3>
@@ -48,7 +48,7 @@ const HomePageLocals = () => {
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-lg border bg-opacity-70">
+        <div className="bg-white p-10 rounded-2xl border bg-opacity-70">
           <h3 className="text-xl font-semibold mb-4">
             Craft Unforgettable Adventures
           </h3>

@@ -4,8 +4,9 @@ import handbooktree from "../../public/images/handbooktree.svg";
 
 const HomePageHero = () => {
   return (
-    <section className="bg-custom-radial-black py-20 lg:py-40 px-5 border-4 border-black rounded-xl">
-      <div className="container mx-auto flex lg:gap-8 flex-col lg:flex-row items-center justify-between px-5">
+    <section className=" py-20 lg:py-40 px-5 border rounded-xl bg-stone-50 ">
+      <div className="">
+      <div className=" container mx-auto flex lg:gap-8 flex-col lg:flex-row items-center justify-between px-5">
         {/* Left column (2/3 width on large screens) */}
         <div className="lg:w-2/3 ">
           <h1 className="text-6xl font-bold leading-tight mb-6">
@@ -24,6 +25,7 @@ const HomePageHero = () => {
         <div className="lg:w-1/3">
           <Image width={300} height={300} src={handbooktree} alt="Hero Image" />
         </div>
+      </div>
       </div>
     </section>
   );

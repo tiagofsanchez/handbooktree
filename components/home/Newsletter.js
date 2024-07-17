@@ -25,11 +25,11 @@ const NewsletterForm = () => {
   return (
     <section
       id="newsletter"
-      className="py-12 px-5 bg-custom-radial-black border-4 border-black rounded-xl"
+      className="py-12 px-5 bg-slate-50 border rounded-xl"
     >
       <div className="container mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-2 items-center">
         {/* Form Section */}
-        <div className="bg-white bg-opacity-70 p-8 rounded-lg shadow-lg">
+        <div className="bg-white bg-opacity-70 p-8 rounded-2xl shadow">
           <h2 className="text-2xl font-bold mb-6">
             Join the HandbookTree Community!
           </h2>
