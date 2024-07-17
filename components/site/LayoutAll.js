@@ -1,6 +1,6 @@
 import Head from "next/head";
-import ListingImage from "./ListingImage";
 import Link from "next/link";
+// import ListingImage from "./ListingImage";
 
 // TODO
 // OG feature
@@ -57,8 +57,8 @@ const LayoutAll = ({ name, listing_url, children }) => {
         <meta name="twitter:image" content={metadata.twitter.image} />
       </Head>
       <div className="relative min-h-screen">
-        <header className="max-w-3xl m-auto p-3  bg-stone-100 rounded-xl mt-3 flex gap-5 items-center">
-          <ListingImage url={listing_url} width={80} height={80} />
+        <header className="max-w-3xl m-auto p-5  rounded-xl text-center mt-5 sm:mx-auto   ">
+          {/* <ListingImage url={listing_url} width={80} height={80} /> */}
           <Link href="/">
             <h1 className="text-4xl capitalize font-extrabold ">{name}</h1>
           </Link>

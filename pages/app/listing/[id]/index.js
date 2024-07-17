@@ -8,16 +8,15 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Notebook } from "lucide-react";
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
-import ImageForm from "@/components/form/imageForm";
+// import ImageForm from "@/components/form/imageForm";
 
 // TODO:
-// DONE - Description: add the description to the listing
-// Photo: add photo to the listing (this will be the main photo of the listing)
+// Will focus on the core so that I have a good MVP
 
 const ListingPage = ({ listingData }) => {
   const supabase = useSupabaseClient();
   const [editorContent, setEditorContent] = useState(listingData.description);
-  const [listingAvatar, setListingAvatar] = useState(listingData.listing_url);
+  // const [listingAvatar, setListingAvatar] = useState(listingData.listing_url);
   const handleContentChange = (reason) => {
     setEditorContent(reason);
   };
@@ -42,22 +41,22 @@ const ListingPage = ({ listingData }) => {
     }
   }
 
-  async function updateListingUrl({ listing_url }) {
-    try {
-      const updates = {
-        updated_at: new Date().toISOString(),
-        listing_url,
-      };
-      let { error } = await supabase
-        .from("listings")
-        .update(updates)
-        .eq("id", listingData.id);
-      if (error) throw error;
-    } catch (error) {
-      alert(JSON.stringify(error, null, 2));
-      console.log(error);
-    }
-  }
+  // async function updateListingUrl({ listing_url }) {
+  //   try {
+  //     const updates = {
+  //       updated_at: new Date().toISOString(),
+  //       listing_url,
+  //     };
+  //     let { error } = await supabase
+  //       .from("listings")
+  //       .update(updates)
+  //       .eq("id", listingData.id);
+  //     if (error) throw error;
+  //   } catch (error) {
+  //     alert(JSON.stringify(error, null, 2));
+  //     console.log(error);
+  //   }
+  // }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -73,14 +72,14 @@ const ListingPage = ({ listingData }) => {
           title="A summary description about your listing"
         />
         <div className="mt-5 space-y-4">
-          <ImageForm
+          {/* <ImageForm
             url={listingAvatar}
             uid={listingData.id}
             onUpload={(path) => {
               setListingAvatar(path);
               updateListingUrl({ listing_url: path });
             }}
-          />
+          /> */}
           <form className="" onSubmit={handleSubmit}>
             <TipTap
               name="tiptap"

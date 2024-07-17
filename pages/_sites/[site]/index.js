@@ -6,18 +6,17 @@ import Link from "next/link";
 import LayoutAll from "@/components/site/LayoutAll";
 
 // TO DOs
+// PHOTO: Comment it out right now to simplify everything and have something out of the door
 // Structure and layout of the listings
 // Prepare this for when there is no content
 
-const SitePage = ({ listingData, guidesData }) => {
-  
-
+const SitePage = ({ listingData }) => {
   const sanitizedHTML = DOMPurify.sanitize(listingData.description);
   return (
     <LayoutAll name={listingData.name} listing_url={listingData.listing_url}>
-      <div className="space-y-20">
-       <div
-          className="mt-10"
+      <div className="space-y-10">
+        <div
+          className="mt-10 p-5 "
           dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
         />
         <div className=" border p-2 rounded-2xl space-y-2 ">
@@ -70,15 +69,9 @@ export async function getStaticProps({ params: { site } }) {
     .select("*")
     .eq("subdomain", site);
 
-  const { data: guidesData } = await supabase
-    .from("guides")
-    .select("*")
-    .eq("listing_id", data[0].id);
-
   return {
     props: {
       listingData: data[0],
-      guidesData,
     },
     revalidate: 3600,
   };
